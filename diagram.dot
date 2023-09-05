@@ -1,0 +1,31 @@
+digraph MovieBucket {
+
+  // Light Mode
+  graph [pad="0.5", ranksep="0.4 equally", nodesep="0.6", fontsize="10pt"];
+  node [fontsize="10pt", shape="rectangle", margin="0.15"];
+  edge [fontsize="8pt", penwidth="1.5", arrowhead="vee"];
+
+  // Dark Mode
+//   graph [pad="0.5", ranksep="0.4 equally", nodesep="0.6", fontsize="10pt", bgcolor="black"];
+//   node [fontsize="10pt", shape="rectangle", margin="0.15", fontcolor="white", color="white", fillcolor="gray30", style="filled"];
+//   edge [fontsize="8pt", penwidth="1.5", arrowhead="vee", color="white", fontcolor="white"];
+
+  // Nodes & Edges
+
+  App [label="App\n\nState: currentUser"]
+  Homepage [label="Homepage\n\nContext: {currentUser}"]
+  Navigation []
+  SearchForm []
+//   Context [label="userContext.Provider\n\n{currentUser: null OR {}, applied: []}"]
+  BucketList []
+  Bucket []
+  MovieList
+  Movie
+
+
+  App -> Homepage -> Navigation, SearchForm
+  Navigation -> BucketList, MovieList
+  BucketList -> Bucket
+  MovieList -> Movie
+
+}
