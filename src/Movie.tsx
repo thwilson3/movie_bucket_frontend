@@ -5,6 +5,14 @@ interface MovieProps {
     movie: Movie
 }
 
+/** Renders a single movie component
+ *
+ *  Props: movie
+ *
+ *  State: none
+ *
+ *  MovieList -> Movie
+ */
 export default function Movie({ movie }: MovieProps){
 
     return(
@@ -19,5 +27,3 @@ export default function Movie({ movie }: MovieProps){
         </div>
     )
 }
-
-// ["title", "poster_path", "release_date", "overview"]
