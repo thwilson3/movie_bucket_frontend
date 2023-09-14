@@ -12,7 +12,7 @@ export default function Navigation(){
           <Toolbar>
             <Typography variant="h6" component={Link} to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
               Movie Bucket
-            </Typography>
+            </Typography >
             <Stack direction="row" spacing={2} sx={{marginLeft: 'auto'}}>
                 <Button color="inherit" component={Link} to="/about">
                 My Buckets
