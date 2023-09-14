@@ -10,6 +10,17 @@ export const theme = createTheme({
       },
     },
     typography: {
-      fontFamily: 'Kanit',
+      fontFamily: 'Inter',
+      fontWeightBold: '700',
+    //   letterSpacing: '1em'
     },
+    components: {
+        MuiButton: {
+            styleOverrides: {
+                root: {
+                    textTransform: 'none'
+                }
+            }
+        }
+    }
   });
