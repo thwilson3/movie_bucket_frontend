@@ -17,6 +17,9 @@ export default function Navigation(){
                 <Button color="inherit" component={Link} to="/about">
                 My Buckets
                 </Button>
+                <Button color="inherit" component={Link} to="/login">
+                Log In
+                </Button>
                 <Button color="inherit" component={Link} to="/contact">
                 Account
                 </Button>
