@@ -1,5 +1,12 @@
 import { FixedSizeList } from 'react-window'
 
+/** Homepage view for Movie Bucket
+ *
+ * State: none
+ * Props: none
+ *
+ * App -> Homepage -> BucketList, Navigation
+ */
 export default function Homepage(){
 return (
     <FixedSizeList
