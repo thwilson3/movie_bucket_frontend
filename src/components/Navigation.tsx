@@ -32,7 +32,7 @@ export default function Navigation() {
                   <a
                     href={item.link}
                     key={idx}
-                    className="flex cursor-pointer items-center border-2 border-black bg-white px-3 py-2 font-bold shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none"
+                    className="flex cursor-pointer items-center border-2 border-black bg-primary px-3 py-2 font-bold shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none"
                   >
                     {item.text}
                   </a>

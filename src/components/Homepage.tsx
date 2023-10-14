@@ -1,5 +1,3 @@
-import { FixedSizeList } from 'react-window'
-
 /** Homepage view for Movie Bucket
  *
  * State: none
@@ -7,16 +5,14 @@ import { FixedSizeList } from 'react-window'
  *
  * App -> Homepage -> BucketList, Navigation
  */
-export default function Homepage(){
-return (
-    <FixedSizeList
-    height={400}
-    width={360}
-    itemSize={46}
-    itemCount={200}
-    overscanCount={5}
-    >
-    {renderRow}
-    </FixedSizeList>
-)
+
+import BucketList from "./BucketList";
+
+// const bucketItems = [{ name: "test bucket" }, { name: "test bucket 2" }];
+export default function Homepage() {
+  return (
+    <div className="flex items-center justify-center h-screen">
+        <BucketList />
+    </div>
+  );
 }
