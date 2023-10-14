@@ -1,6 +1,6 @@
 import './App.css'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Navigation from './Navigation';
+import Navigation from './components/Navigation';
 
 export default function App() {
 

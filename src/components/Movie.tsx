@@ -1,5 +1,5 @@
 import { Typography } from "@mui/material";
-import { Movie } from "./interfaces";
+import { Movie } from "../interfaces";
 
 interface MovieProps {
     movie: Movie
