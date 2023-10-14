@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import HamburgerMenu from "./HamburgerMenu";
+import { TbAlignRight } from "react-icons/tb"
 
 const navItems = [
   { link: `example.com`, text: "login" },
@@ -23,7 +23,7 @@ export default function Navigation() {
               <div>moviebucket</div>
             </a>
             <div
-              className={`mt-8 flex flex-col items-start space-y-8 lg:mt-0 lg:flex lg:flex-row lg:items-center lg:space-x-3 lg:space-y-0 ${
+              className={`mt-8 flex flex-col items-end space-y-8 lg:mt-0 lg:flex lg:flex-row lg:items-center lg:space-x-3 lg:space-y-0 ${
                 isOpen ? "block" : "hidden"
               }`}
             >
@@ -39,7 +39,10 @@ export default function Navigation() {
                 </div>
               ))}
             </div>
-            {/* <HamburgerMenu toggleMenu={toggleMenu}/> */}
+            <TbAlignRight
+            className="cursor-pointer absolute right-5 lg:hidden"
+            onClick={toggleMenu}
+            />
           </div>
         </nav>
       </div>
