@@ -11,7 +11,7 @@ import BucketList from "./BucketList";
 // const bucketItems = [{ name: "test bucket" }, { name: "test bucket 2" }];
 export default function Homepage() {
   return (
-    <div className="flex items-center justify-center h-screen">
+    <div className="flex items-center justify-center h-screen bg-background">
         <BucketList />
     </div>
   );
