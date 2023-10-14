@@ -6,10 +6,10 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary:'#56ff56',
+        primary:'#569cff',
         secondary: '#cae0ce',
         accent: '#ffffff',
-        background: '#e5e3ca'
+        background: '#fffccf'
       },
       // fontFamily: {
       //   mono: ['var(--font-SF-Mono)']
