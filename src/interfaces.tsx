@@ -1,6 +1,6 @@
 
 
-export interface Movie{
+export interface MovieType{
     id: number,
     title: string,
     image?: string,
@@ -11,21 +11,21 @@ export interface Movie{
     is_watched: boolean,
 }
 
-export interface Bucket{
+export interface BucketType{
     id: number,
     bucket_name: string,
     genre?: string,
     description?: string,
 }
 
-export interface User{
+export interface UserType{
     id: number,
     username: string,
     email: string,
     password: string,
 }
 
-export interface BucketLink{
+export interface BucketLinkType{
     id: number,
     bucket_id: number,
     invite_code: string,
