@@ -7,12 +7,13 @@
  */
 
 import BucketList from "./BucketList";
+import MainContainer from "./MainContainer";
 
 // const bucketItems = [{ name: "test bucket" }, { name: "test bucket 2" }];
 export default function Homepage() {
   return (
-    <div className="flex items-center justify-center h-screen bg-background">
+    <MainContainer>
         <BucketList />
-    </div>
+    </MainContainer>
   );
 }
