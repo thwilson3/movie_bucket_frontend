@@ -1,6 +1,7 @@
 import BucketList from "./BucketList";
 import LandingOptions from "./LandingOptions";
 import MainContainer from "./MainContainer";
+import WelcomeContainer from "./WelcomeContainer";
 
 /** Homepage view for Movie Bucket
  *
@@ -10,9 +11,13 @@ import MainContainer from "./MainContainer";
  * App -> Homepage -> BucketList, Navigation
  */
 export default function Homepage() {
+    const test = true
   return (
-    <MainContainer>
-      <LandingOptions/>
-    </MainContainer>
+    <>
+    {test ? <WelcomeContainer/> : null}
+        <MainContainer>
+        <LandingOptions/>
+        </MainContainer>
+    </>
   );
 }
