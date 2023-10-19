@@ -1,8 +1,8 @@
 import { Typography } from "@mui/material";
-import { Movie } from "../interfaces";
+import { MovieType } from "../interfaces";
 
 interface MovieProps {
-    movie: Movie
+    movie: MovieType
 }
 
 /** Renders a single movie component
