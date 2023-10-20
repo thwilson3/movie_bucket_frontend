@@ -10,8 +10,8 @@ export default function WelcomeContainer() {
   return (
     <>
       <div
-        className={`flex relative outline outline-2 mx-auto flex-col mt-20 w-80 opacity-50 bg-white ${
-          isOpen ? "block" : "hidden"
+        className={`flex relative outline outline-2 mx-auto flex-col mt-20 w-80 bg-white ${
+          isOpen ? "block opacity-50" : "hidden"
         }`}
       >
         <AiOutlineCloseSquare
