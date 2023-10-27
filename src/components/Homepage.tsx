@@ -1,6 +1,6 @@
 import BucketList from "./BucketList";
+import AnonOptions from "./AnonOptions";
 import LandingOptions from "./LandingOptions";
-import LoginForm from "./LoginForm";
 import MainContainer from "./MainContainer";
 import WelcomeContainer from "./WelcomeContainer";
 
@@ -11,15 +11,20 @@ import WelcomeContainer from "./WelcomeContainer";
  *
  * App -> Homepage -> BucketList, Navigation
  */
-export default function Homepage({ login }) {
-    const test = true
+export default function Homepage({ login, currentUser }) {
   return (
     <>
-    {test ? <WelcomeContainer/> : null}
+      {!currentUser ? (
+        <>
+          <WelcomeContainer />
+          <MainContainer>
+            <AnonOptions login={login}/>
+          </MainContainer>
+        </>
+      ) :
         <MainContainer>
-        {/* <LandingOptions/> */}
-        <LoginForm login={login}/>
-        </MainContainer>
+          <LandingOptions />
+        </MainContainer>}
     </>
   );
 }
