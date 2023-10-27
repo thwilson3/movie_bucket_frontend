@@ -3,6 +3,7 @@ import Navigation from "./components/Navigation";
 import Homepage from "./components/Homepage";
 import MovieBucketAPI from "./api";
 import { useState } from "react";
+import RoutesList from "./RoutesList";
 
 export const TOKEN_STORAGE_ID = "Movie-Bucket-Token";
 
@@ -23,11 +24,7 @@ export default function App() {
     <>
       <Navigation />
       <Homepage login={login} currentUser={currentUser}/>
-      {/* <Switch> */}
-      {/* <Route path="/" exact component={Homepage} />
-        <Route path="/my-buckets" component={BucketList} />
-        <Route path="/account" component={Account} /> */}
-      {/* </Switch> */}
+      <RoutesList login={login} currentUser={currentUser}/>
     </>
   );
 }

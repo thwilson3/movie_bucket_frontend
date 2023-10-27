@@ -6,6 +6,8 @@ import {
     createBrowserRouter,
     RouterProvider,
   } from "react-router-dom";
+import LoginForm from "./components/LoginForm.tsx";
+import BucketList from "./components/BucketList.tsx";
 
 //   import Root, { rootLoader } from "./routes/root";
 //   import Team, { teamLoader } from "./routes/team";
@@ -16,7 +18,8 @@ import {
       element: <App />,
       children: [
         {
-          path: "team",
+          path: "login",
+          element: <BucketList/>
         },
       ],
     },

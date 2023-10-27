@@ -1,4 +1,3 @@
-import BucketList from "./BucketList";
 import AnonOptions from "./AnonOptions";
 import LandingOptions from "./LandingOptions";
 import MainContainer from "./MainContainer";

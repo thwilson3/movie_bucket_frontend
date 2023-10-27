@@ -1,5 +1,4 @@
 import ContainerHeader from "./ContainerHeader";
-import SearchBar from "./SearchBar";
 
 export default function MainContainer({ children }) {
   return (
