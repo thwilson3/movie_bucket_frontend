@@ -1,48 +1,45 @@
 const BASE_URL = "http://localhost:5001";
 
-export default class MovieBucketAPI{
+export default class MovieBucketAPI {
+  static token: string;
 
-    static token: string;
+  static async request(endpoint: string, data = {}, method = "get") {
+    let url = `${BASE_URL}/${endpoint}`;
+    const headers = {
+      Authorization: `Bearer ${MovieBucketAPI.token} `,
+      "Content-Type": "application/json",
+    };
+    let body;
 
-    static async request(endpoint: string, data = {}, method = "get"){
-
-        let url = `${BASE_URL}/${endpoint}`;
-        const headers = {
-            Authorization: `Bearer ${MovieBucketAPI.token} `,
-            'Content-Type': 'application/json'
-    }
-        let body;
-
-        if(method !== "get"){
-            body = JSON.stringify(data)
-        } else {
-            const params = new URLSearchParams(data);
-            if (params.toString()) {
-              url += `?${params.toString()}`;
-            }
-        }
-
-        try {
-            const response = await fetch(url, {
-                method,
-                headers,
-                body: body ? body : null
-
-            })
-
-            if (!response.ok){
-                const errorMsg = await response.text()
-                throw [errorMsg]
-            }
-
-            return await response.json()
-        } catch(err: unknown){
-            throw [err.text]
-        }
+    if (method !== "get") {
+      body = JSON.stringify(data);
+    } else {
+      const params = new URLSearchParams(data);
+      if (params.toString()) {
+        url += `?${params.toString()}`;
+      }
     }
 
-    static async login(username, password){
-        const data = {username, password}
-        return await this.request('/login', data, "post")
+    try {
+      const response = await fetch(url, {
+        method,
+        headers,
+        body: body ? body : null,
+      });
+
+      if (!response.ok) {
+        const errorMsg = await response.text();
+        throw [errorMsg];
+      }
+
+      return await response.json();
+    } catch (err: unknown) {
+      throw [err.text];
     }
+  }
+
+  static async login(username, password) {
+    const data = { username, password };
+    return await this.request("/login", data, "post");
+  }
 }
