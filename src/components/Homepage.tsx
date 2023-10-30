@@ -13,7 +13,7 @@ import { UserContextType } from "../interfaces";
  *
  * App -> Homepage -> BucketList, Navigation
  */
-export default function Homepage({ login }) {
+export default function Homepage({ login, logout }) {
   const { currentUser } = useContext(UserContext) as UserContextType
   console.log("currentUser", currentUser)
   return (
@@ -21,12 +21,12 @@ export default function Homepage({ login }) {
       {currentUser === null ? (
         <>
           <WelcomeContainer />
-          <MainContainer>
+          <MainContainer logout={logout}>
             <AnonOptions login={login}/>
           </MainContainer>
         </>
       ) :
-        <MainContainer>
+        <MainContainer logout={logout}>
           <LandingOptions />
         </MainContainer>}
     </>
