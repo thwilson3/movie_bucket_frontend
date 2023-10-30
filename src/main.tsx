@@ -14,7 +14,7 @@ import BucketList from "./components/BucketList.tsx";
 
   const router = createBrowserRouter([
     {
-      path: "/",
+      path: "*",
       element: <App />,
       children: [
         {

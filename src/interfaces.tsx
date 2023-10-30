@@ -31,3 +31,8 @@ export interface BucketLinkType{
     invite_code: string,
     expiration_date: string,
 }
+
+export type UserContextType = {
+    currentUser?: UserType | null,
+    setCurrentUser: (user: UserType | null) => void
+}

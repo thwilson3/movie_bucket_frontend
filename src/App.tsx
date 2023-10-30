@@ -4,6 +4,7 @@ import Homepage from "./components/Homepage";
 import MovieBucketAPI from "./api";
 import { useState } from "react";
 import RoutesList from "./RoutesList";
+import { UserContext } from "./UserContext";
 
 export const TOKEN_STORAGE_ID = "Movie-Bucket-Token";
 
@@ -20,11 +21,22 @@ export default function App() {
     } else throw new Error(JSON.stringify({ message, status }));
   }
 
+  async function signup({ username, password, email, }) {
+    const { access_token, message, status, success, user } =
+      await MovieBucketAPI.signup(username, password, email);
+    if (success) {
+      setToken(access_token);
+      setCurrentUser(user);
+    } else throw new Error(JSON.stringify({ message, status }))
+  }
+
   return (
-    <>
-      <Navigation />
-      <Homepage login={login} currentUser={currentUser}/>
-      <RoutesList login={login} currentUser={currentUser}/>
-    </>
+    <UserContext.Provider value={{currentUser, setCurrentUser}}>
+      <>
+        <Navigation />
+        {/* <Homepage login={login}/> */}
+        <RoutesList login={login} signup={signup}/>
+      </>
+    </UserContext.Provider>
   );
 }
