@@ -6,7 +6,8 @@ import { UserContext } from "./UserContext";
 import { UserContextType } from "./interfaces";
 import SignUpForm from "./components/SignUpForm";
 import LoginContainer from "./components/LogInContainer";
-import BucketContainer from "./components/BucketContainer";
+import BucketsContainer from "./components/BucketsContainer";
+import MoviesContainer from "./components/MoviesContainer";
 
 export default function RoutesList({ signup, login, logout }) {
     const { currentUser } = useContext(UserContext) as UserContextType;
@@ -20,7 +21,8 @@ export default function RoutesList({ signup, login, logout }) {
         /> */}
         <Route path="/login" element={<LoginContainer login={login} logout={logout}/>} />
         <Route path="/signup" element={<SignUpForm signup={signup} />} />
-        <Route path="/buckets" element={<BucketContainer />} />
+        <Route path="/buckets" element={currentUser !== null ? <BucketsContainer /> : <Navigate to={"/"} />} />
+        <Route path="/buckets/:id" element={<MoviesContainer />}/>
         {/* <Route
           path="/profile"
           element={
