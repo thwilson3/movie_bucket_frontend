@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Bucket from "./Bucket";
 
 // const bucketItems = [{ id:1, bucket_name: "test bucket" }, { id:2, bucket_name: "test bucket 2" }];
@@ -11,10 +12,13 @@ import Bucket from "./Bucket";
  */
 export default function BucketList({ buckets }) {
   return (
-    <>
+    <div className="flex flex-col gap-6">
+      {console.log(buckets)}
       {buckets.map((bucket, idx) => (
-        <Bucket bucket={bucket} idx={idx} />
+        <Link to={`${bucket.id}`}>
+          <Bucket bucket={bucket} idx={idx} />
+        </Link>
       ))}
-    </>
+    </div>
   );
 }

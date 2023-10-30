@@ -1,4 +1,3 @@
-import { Typography } from "@mui/material";
 import { MovieType } from "../interfaces";
 
 interface MovieProps {
@@ -13,11 +12,11 @@ interface MovieProps {
  *
  *  MovieList -> Movie
  */
-export default function Movie({ movie }: MovieProps){
+export default function Movie({ movie, idx }: MovieProps){
 
     return(
-        <div className="Movie">
-            <Typography variant="h6">{movie.title}</Typography>
+        <div className="Movie" key={idx}>
+            {movie.title}
             <img
                 src={movie.image}
                 alt={`${movie.title} poster`}
