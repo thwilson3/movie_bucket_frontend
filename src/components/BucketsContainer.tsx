@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../UserContext";
 import { UserContextType } from "../interfaces";
+
 import BucketList from "./BucketList";
 import MainContainer from "./MainContainer";
 import MovieBucketAPI from "../api";

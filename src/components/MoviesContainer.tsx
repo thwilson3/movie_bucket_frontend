@@ -1,11 +1,12 @@
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../UserContext";
 import { UserContextType } from "../interfaces";
+import { useParams } from "react-router-dom";
+
 import MainContainer from "./MainContainer";
 import MovieBucketAPI from "../api";
 import LoadingSpinner from "./LoadingSpinner";
 import MovieList from "./MovieList";
-import { useParams } from "react-router-dom";
 
 export default function MoviesContainer() {
   const [movies, setMovies] = useState([]);

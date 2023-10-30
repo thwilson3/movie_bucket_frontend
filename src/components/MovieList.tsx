@@ -4,9 +4,9 @@ import Movie from "./Movie";
 export default function MovieList({ movies }) {
   return (
     <div className="flex flex-col gap-6">
-      {movies.map((movie, idx) => (
+      {movies.map((movie) => (
         <Link to={`movies/${movie.id}`}>
-          <Movie movie={movie} idx={idx} />
+          <Movie movie={movie} />
         </Link>
       ))}
     </div>

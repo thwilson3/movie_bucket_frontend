@@ -12,10 +12,10 @@ interface MovieProps {
  *
  *  MovieList -> Movie
  */
-export default function Movie({ movie, idx }: MovieProps){
+export default function Movie({ movie }: MovieProps){
 
     return(
-        <div className="Movie" key={idx}>
+        <div className="Movie" key={movie.id}>
             {movie.title}
             <img
                 src={movie.image}

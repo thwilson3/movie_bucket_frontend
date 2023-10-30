@@ -1,10 +1,11 @@
 import { useContext } from "react";
+import { UserContext } from "../UserContext";
+import { UserContextType } from "../interfaces";
+
 import AnonOptions from "./AnonOptions";
 import LandingOptions from "./LandingOptions";
 import MainContainer from "./MainContainer";
 import WelcomeContainer from "./WelcomeContainer";
-import { UserContext } from "../UserContext";
-import { UserContextType } from "../interfaces";
 
 /** Homepage view for Movie Bucket
  *
