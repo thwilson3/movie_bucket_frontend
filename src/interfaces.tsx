@@ -36,3 +36,10 @@ export type UserContextType = {
     currentUser?: UserType | null,
     setCurrentUser: (user: UserType | null) => void
 }
+
+export type HeaderOptions = {
+    title?: string;
+    text: string;
+    function: () => void;
+    path: string;
+  };
