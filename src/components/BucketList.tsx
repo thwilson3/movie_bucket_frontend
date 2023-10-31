@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import Bucket from "./Bucket";
+import { BucketType } from "../interfaces";
 
 /** Renders a list of buckets
  *
@@ -8,10 +9,9 @@ import Bucket from "./Bucket";
  *
  * Homepage -> BucketList -> Bucket
  */
-export default function BucketList({ buckets }) {
+export default function BucketList({ buckets }: {buckets: BucketType[]}) {
   return (
     <div className="flex flex-col gap-6">
-      {console.log(buckets)}
       {buckets.map((bucket) => (
         <Link to={`${bucket.id}`}>
           <Bucket bucket={bucket} />

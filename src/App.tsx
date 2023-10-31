@@ -11,6 +11,8 @@ export default function App() {
   const [currentUser, setCurrentUser] = useState(null);
 
   async function login({ username, password }) {
+    console.log("login in app", username, password);
+
     const { access_token, message, status, success, user } =
       await MovieBucketAPI.login(username, password);
     if (success) {

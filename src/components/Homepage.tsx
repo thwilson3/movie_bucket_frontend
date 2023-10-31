@@ -15,21 +15,35 @@ import WelcomeContainer from "./WelcomeContainer";
  * App -> Homepage -> BucketList, Navigation
  */
 export default function Homepage({ login, logout }) {
-  const { currentUser } = useContext(UserContext) as UserContextType
-  console.log("currentUser", currentUser)
+  const { currentUser } = useContext(UserContext) as UserContextType;
+  const userOptions = {
+    title: currentUser?.username,
+    text: "logout",
+    function: logout,
+    path: "/",
+  };
+
+  const loginOptions = {
+    text: "login",
+    function: login,
+    path: "login",
+  }
+
+  console.log("currentUser", currentUser);
   return (
     <>
       {currentUser === null ? (
         <>
           <WelcomeContainer />
-          <MainContainer logout={logout}>
-            <AnonOptions login={login}/>
+          <MainContainer headerOptions={loginOptions}>
+            <AnonOptions />
           </MainContainer>
         </>
-      ) :
-        <MainContainer logout={logout}>
+      ) : (
+        <MainContainer headerOptions={userOptions}>
           <LandingOptions />
-        </MainContainer>}
+        </MainContainer>
+      )}
     </>
   );
 }
