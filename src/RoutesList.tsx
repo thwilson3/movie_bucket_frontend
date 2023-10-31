@@ -18,7 +18,7 @@ export default function RoutesList({ signup, login, logout }) {
         <Route path="/login" element={<LoginContainer login={login} logout={logout}/>} />
         <Route path="/signup" element={<SignUpForm signup={signup} />} />
         <Route path="/buckets" element={currentUser !== null ? <BucketsContainer /> : <Navigate to={"/"} />} />
-        <Route path="/buckets/:id" element={<MoviesContainer />}/>
+        <Route path="/buckets/:id" element={currentUser !== null ? <MoviesContainer /> : <Navigate to={"/"} />}/>
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     );
