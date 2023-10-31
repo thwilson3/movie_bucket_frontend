@@ -1,9 +1,9 @@
 import LoginForm from "./LoginForm";
 import MainContainer from "./MainContainer";
 
-export default function LoginContainer({ login, logout }){
+export default function LoginContainer({ login }){
     return(
-        <MainContainer logout={logout}>
+        <MainContainer>
             <LoginForm login={login}/>
         </MainContainer>
     )

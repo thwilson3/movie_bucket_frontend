@@ -15,7 +15,7 @@ export default function MoviesContainer() {
   console.log("id", id);
 
 
-  useEffect(function getBucketsOnMount() {
+  useEffect(function getMoviesOnMount() {
     getMovies();
   }, []);
 
