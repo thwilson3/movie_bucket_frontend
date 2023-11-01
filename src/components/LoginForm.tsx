@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { LoginFunction } from "../interfaces";
 
-export default function LoginForm({ login }) {
+export default function LoginForm({ login }: {login: LoginFunction}) {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: "",

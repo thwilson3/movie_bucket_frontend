@@ -43,4 +43,5 @@ export type HeaderOptions = {
 };
 
 export type LoginFunction = (username: string, password: string) => void;
+export type SignupFunction = (username: string, password: string, email: string) => void;
 export type LogoutFunction = () => void;

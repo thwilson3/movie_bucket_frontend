@@ -10,7 +10,7 @@ export const TOKEN_STORAGE_ID = null;
 export default function App() {
   const [currentUser, setCurrentUser] = useState(null);
 
-  async function login({ username, password }) {
+  async function login({ username, password }: {username: string, password: string}) {
     console.log("login in app", username, password);
 
     const { access_token, message, status, success, user } =
@@ -21,7 +21,7 @@ export default function App() {
     } else throw new Error(JSON.stringify({ message, status }));
   }
 
-  async function signup({ username, password, email }) {
+  async function signup({ username, password, email }: {username: string, password: string, email: string}) {
     const { access_token, message, status, success, user } =
       await MovieBucketAPI.signup(username, password, email);
     if (success) {
