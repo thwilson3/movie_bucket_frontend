@@ -40,6 +40,6 @@ export type UserContextType = {
 export type HeaderOptions = {
     title?: string;
     text: string;
-    function: () => void;
+    function?: () => void;
     path: string;
   };
