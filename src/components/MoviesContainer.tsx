@@ -1,6 +1,4 @@
-import { useContext, useEffect, useState } from "react";
-import { UserContext } from "../UserContext";
-import { UserContextType } from "../interfaces";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import MainContainer from "./MainContainer";
@@ -10,28 +8,38 @@ import MovieList from "./MovieList";
 
 export default function MoviesContainer() {
   const [movies, setMovies] = useState([]);
-  const { currentUser } = useContext(UserContext) as UserContextType;
-  const { id } = useParams()
-  console.log("id", id);
+  const [bucket, setBucket] = useState([]);
+  const { id } = useParams();
 
+  const headerOptions = {
+    title: bucket?.bucket_name,
+    buttons: [{
+      text: "text",
+      path: "",
+    }]
+  };
 
-  useEffect(function getMoviesOnMount() {
-    getMovies();
+  useEffect(function fetchContentOnMount() {
+    getContent();
   }, []);
 
-  async function getMovies() {
-    console.log(currentUser);
-
-    const newMovies = await MovieBucketAPI.getMovies(id);
-    setMovies(newMovies);
-    console.log(newMovies);
-
+  async function getContent() {
+    try {
+      const [movies, { bucket }] = await Promise.all([
+        MovieBucketAPI.getMovies(id),
+        MovieBucketAPI.getSingleBucket(id),
+      ]);
+      setMovies(movies);
+      setBucket(bucket);
+    } catch (err) {
+      throw new Error(err);
+    }
   }
 
-  if(!movies) return <LoadingSpinner />
+  if (!movies) return <LoadingSpinner />;
 
   return (
-    <MainContainer>
+    <MainContainer headerOptions={headerOptions}>
       <MovieList movies={movies} />
     </MainContainer>
   );

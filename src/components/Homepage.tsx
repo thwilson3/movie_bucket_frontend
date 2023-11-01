@@ -25,15 +25,19 @@ export default function Homepage({
 
   const userOptions = {
     title: currentUser?.username,
-    text: "logout",
-    function: logout,
-    path: "/",
+    buttons: [{
+      text: "logout",
+      function: logout,
+      path: "/",
+    }]
   };
 
   const loginOptions = {
-    text: "login",
-    function: login,
-    path: "login",
+    buttons: [{
+      text: "login",
+      function: login,
+      path: "login",
+    }]
   };
 
   console.log("currentUser", currentUser);

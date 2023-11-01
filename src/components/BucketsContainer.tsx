@@ -12,8 +12,11 @@ export default function BucketsContainer() {
   const { currentUser } = useContext(UserContext) as UserContextType;
 
   const headerOptions = {
-    text: "new",
-    path: "add",
+    title: `${currentUser?.username}'s Buckets`,
+    buttons: [{
+      text: "new",
+      path: "add",
+    }]
   };
 
   useEffect(function getBucketsOnMount() {
