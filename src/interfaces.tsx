@@ -37,10 +37,14 @@ export type UserContextType = {
 
 export type HeaderOptions = {
   title?: string;
-  text: string;
-  function?: Function;
-  path: string;
+  buttons: OptionButtonType[]
 };
+
+export type OptionButtonType = {
+    text: string;
+    function?: Function;
+    path: string;
+}
 
 export type LoginFunction = (username: string, password: string) => void;
 export type SignupFunction = (username: string, password: string, email: string) => void;
