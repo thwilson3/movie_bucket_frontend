@@ -14,7 +14,7 @@ export default function ContainerHeader({ options }: {options?: HeaderOptions}) 
   }
   return (
     <>
-      <div className="flex py-2 md:py-2 lg:py-2 font-bold bg-secondary justify-center outline outline-2 top-0 left-0 absolute w-full">
+      <div className="flex py-2 md:py-2 lg:py-2 font-bold bg-accent justify-center outline outline-2 top-0 left-0 absolute w-full">
         {options?.title ? options.title : "welcome"}
       </div>
       {options !== undefined ? (
