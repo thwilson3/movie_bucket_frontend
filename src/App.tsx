@@ -21,25 +21,25 @@ export default function App() {
     } else throw new Error(JSON.stringify({ message, status }));
   }
 
-  async function signup({ username, password, email, }) {
+  async function signup({ username, password, email }) {
     const { access_token, message, status, success, user } =
       await MovieBucketAPI.signup(username, password, email);
     if (success) {
       setCurrentUser(user);
       MovieBucketAPI.token = access_token;
-    } else throw new Error(JSON.stringify({ message, status }))
+    } else throw new Error(JSON.stringify({ message, status }));
   }
 
-  function logout(){
-    setCurrentUser(null)
+  function logout() {
+    setCurrentUser(null);
     MovieBucketAPI.token = null;
   }
 
   return (
-    <UserContext.Provider value={{currentUser, setCurrentUser}}>
+    <UserContext.Provider value={{ currentUser, setCurrentUser }}>
       <>
         <Navigation />
-        <RoutesList login={login} signup={signup} logout={logout}/>
+        <RoutesList login={login} signup={signup} logout={logout} />
       </>
     </UserContext.Provider>
   );
