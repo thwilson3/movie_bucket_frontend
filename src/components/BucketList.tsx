@@ -14,7 +14,7 @@ export default function BucketList({ buckets }: {buckets: BucketType[]}) {
     <div className="flex flex-col gap-6">
       {buckets.map((bucket) => (
         <Link to={`${bucket.id}`}>
-          <Bucket bucket={bucket} />
+          <Bucket key={bucket.id} bucket={bucket} />
         </Link>
       ))}
     </div>

@@ -8,7 +8,7 @@ export default function MovieList({ movies }: {movies: MovieType[]}) {
     <div className="flex flex-col gap-6">
       {movies.map((movie) => (
         <Link to={`movies/${movie.id}`}>
-          <Movie movie={movie} />
+          <Movie key={movie.id} movie={movie} />
         </Link>
       ))}
     </div>
