@@ -11,6 +11,11 @@ export default function BucketsContainer() {
   const [buckets, setBuckets] = useState([]);
   const { currentUser } = useContext(UserContext) as UserContextType;
 
+  const headerOptions = {
+    text: "new",
+    path: "add",
+  };
+
   useEffect(function getBucketsOnMount() {
     getBuckets();
   }, []);
@@ -21,13 +26,12 @@ export default function BucketsContainer() {
     const newBuckets = await MovieBucketAPI.getBuckets();
     setBuckets(newBuckets);
     console.log(newBuckets);
-
   }
 
-  if(!buckets) return <LoadingSpinner />
+  if (!buckets) return <LoadingSpinner />;
 
   return (
-    <MainContainer>
+    <MainContainer headerOptions={headerOptions}>
       <BucketList buckets={buckets} />
     </MainContainer>
   );
