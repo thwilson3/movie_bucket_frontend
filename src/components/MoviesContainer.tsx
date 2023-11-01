@@ -5,6 +5,7 @@ import MainContainer from "./MainContainer";
 import MovieBucketAPI from "../api";
 import LoadingSpinner from "./LoadingSpinner";
 import MovieList from "./MovieList";
+import SearchBar from "./SearchBar";
 
 export default function MoviesContainer() {
   const [movies, setMovies] = useState([]);
@@ -14,8 +15,11 @@ export default function MoviesContainer() {
   const headerOptions = {
     title: bucket?.bucket_name,
     buttons: [{
-      text: "text",
-      path: "",
+      text: "edit",
+      path: "edit"
+    }, {
+      text: "invite",
+      path: "invite",
     }]
   };
 
@@ -40,6 +44,7 @@ export default function MoviesContainer() {
 
   return (
     <MainContainer headerOptions={headerOptions}>
+      <SearchBar placeholder="Find a movie"/>
       <MovieList movies={movies} />
     </MainContainer>
   );
