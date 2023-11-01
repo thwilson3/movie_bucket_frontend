@@ -38,12 +38,12 @@ export default class MovieBucketAPI {
     }
   }
 
-  static async login(username, password) {
+  static async login(username: string, password: string) {
     const data = { username, password };
     return await this.request("/login", data, "post");
   }
 
-  static async signup(username, password, email) {
+  static async signup(username: string, password: string, email: string) {
     const data = { username, password, email };
     return await this.request("/signup", data, "post")
   }
@@ -52,12 +52,12 @@ export default class MovieBucketAPI {
     return await this.request("users/buckets")
   }
 
-  static async createBucket(bucket_name, description, genre){
+  static async createBucket(bucket_name: string, description: string, genre: string){
     const data = { bucket_name, description, genre }
     return await this.request("users/buckets", data, "post")
   }
 
-  static async getMovies(bucket_id) {
+  static async getMovies(bucket_id: number) {
     const data = { bucket_id }
     return await this.request("users/buckets/movies", data)
   }
