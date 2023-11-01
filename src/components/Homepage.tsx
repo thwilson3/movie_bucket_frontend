@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { UserContext } from "../UserContext";
-import { UserContextType } from "../interfaces";
+import { LoginFunction, LogoutFunction, UserContextType } from "../interfaces";
 
 import AnonOptions from "./AnonOptions";
 import LandingOptions from "./LandingOptions";
@@ -14,8 +14,15 @@ import WelcomeContainer from "./WelcomeContainer";
  *
  * App -> Homepage -> BucketList, Navigation
  */
-export default function Homepage({ login, logout }) {
+export default function Homepage({
+  login,
+  logout,
+}: {
+  login: LoginFunction;
+  logout: LogoutFunction;
+}) {
   const { currentUser } = useContext(UserContext) as UserContextType;
+
   const userOptions = {
     title: currentUser?.username,
     text: "logout",
@@ -27,7 +34,7 @@ export default function Homepage({ login, logout }) {
     text: "login",
     function: login,
     path: "login",
-  }
+  };
 
   console.log("currentUser", currentUser);
   return (
