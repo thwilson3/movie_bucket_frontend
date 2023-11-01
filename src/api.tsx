@@ -52,6 +52,11 @@ export default class MovieBucketAPI {
     return await this.request("users/buckets")
   }
 
+  static async createBucket(bucket_name, description, genre){
+    const data = { bucket_name, description, genre }
+    return await this.request("users/buckets", data, "post")
+  }
+
   static async getMovies(bucket_id) {
     const data = { bucket_id }
     return await this.request("users/buckets/movies", data)
