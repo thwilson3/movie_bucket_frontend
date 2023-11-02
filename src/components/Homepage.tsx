@@ -46,7 +46,7 @@ export default function Homepage({
       {currentUser === null ? (
         <>
           <WelcomeContainer />
-          <MainContainer headerOptions={loginOptions}>
+          <MainContainer >
             <AnonOptions />
           </MainContainer>
         </>

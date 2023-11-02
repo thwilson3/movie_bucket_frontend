@@ -19,7 +19,7 @@ export default function Navigation() {
       <div className="h-auto w-screen bg-background py-2 text-black">
         <nav className="mx-auto h-auto w-full max-w-[1600px] lg:relative lg:top-0 ">
           <div className="flex flex-col px-6 py-6 lg:flex-row lg:items-center lg:justify-between lg:px-10 lg:py-4 xl:px-20">
-            <a href="#">
+            <a href="/">
               <div>moviebucket</div>
             </a>
             <div

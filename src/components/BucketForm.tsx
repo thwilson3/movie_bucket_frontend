@@ -11,13 +11,7 @@ export default function BucketForm() {
   });
   const [formErrors, setFormErrors] = useState([]);
 
-  console.debug(
-    "BucketForm",
-    "formData=",
-    formData,
-    "formErrors",
-    formErrors
-  );
+  console.debug("BucketForm", "formData=", formData, "formErrors", formErrors);
 
   /** Handle form submit:
    *
@@ -26,12 +20,12 @@ export default function BucketForm() {
   async function handleSubmit(evt) {
     evt.preventDefault();
     try {
-        console.log("inside create function");
-        const { bucketName, description, genre } = formData
-        await MovieBucketAPI.createBucket(bucketName, description, genre);
-        navigate("/buckets");
+      console.log("inside create function");
+      const { bucketName, description, genre } = formData;
+      await MovieBucketAPI.createBucket(bucketName, description, genre);
+      navigate("/buckets");
     } catch (err) {
-        setFormErrors(err);
+      setFormErrors(err);
     }
   }
 
@@ -44,19 +38,29 @@ export default function BucketForm() {
   return (
     <div className="bg-inherit">
       <form onSubmit={handleSubmit} className="flex flex-col gap-6">
-      <div className="border-2 flex flex-row mt-8 border-black font-bold shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-          <label className="bg-black outline outline-black outline-2 text-white p-3">bucket name</label>
-          <input
-            name="bucketName"
-            className="px-1 bg-white"
-            value={formData.bucketName}
-            onChange={handleChange}
-            autoComplete="current-bucketName"
-            required
-          />
+        <div>
+          <p className="flex flex-col text-sm opacity-60 mt-3 absolute top-16">
+            *Required
+          </p>
+
+          <div className="border-2 flex flex-row relative mt-8 border-black font-bold shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+            <label className="bg-black outline outline-black outline-2 text-white p-3">
+              bucket name
+            </label>
+            <input
+              name="bucketName"
+              className="px-1 bg-white"
+              value={formData.bucketName}
+              onChange={handleChange}
+              autoComplete="current-bucketName"
+              required
+            />
+          </div>
         </div>
         <div className="border-2 flex flex-row border-black font-bold shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-          <label className="bg-black outline outline-black outline-2 text-white p-3">description</label>
+          <label className="bg-black outline outline-black outline-2 text-white p-3">
+            description
+          </label>
           <input
             name="description"
             className="px-1 bg-white w-full resize-y"
@@ -66,7 +70,9 @@ export default function BucketForm() {
           />
         </div>
         <div className="border-2 flex flex-row border-black font-bold shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-          <label className="bg-black outline outline-black outline-2 text-white p-3">genre</label>
+          <label className="bg-black outline outline-black outline-2 text-white p-3">
+            genre
+          </label>
           <input
             name="genre"
             className="px-1 bg-white w-full"

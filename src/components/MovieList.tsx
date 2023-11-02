@@ -3,13 +3,11 @@ import { MovieType } from "../interfaces";
 
 import Movie from "./Movie";
 
-export default function MovieList({ movies }: {movies: MovieType[]}) {
+export default function MovieList({ movies, deleteMovie }: { movies: MovieType[] }) {
   return (
     <div className="flex flex-col gap-6">
       {movies.map((movie) => (
-        <Link to={`movies/${movie.id}`}>
-          <Movie key={movie.id} movie={movie} />
-        </Link>
+        <Movie key={movie.id} movie={movie} deleteMovie={deleteMovie}/>
       ))}
     </div>
   );

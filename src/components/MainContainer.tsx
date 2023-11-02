@@ -1,7 +1,8 @@
+import { ReactNode } from "react";
 import { HeaderOptions } from "../interfaces";
 import ContainerHeader from "./ContainerHeader";
 
-export default function MainContainer({ children, headerOptions }: {children: JSX.Element; headerOptions?: HeaderOptions}) {
+export default function MainContainer({ children, headerOptions }: {children: ReactNode; headerOptions?: HeaderOptions}) {
   return (
     <>
       <div className="flex items-center flex-col justify-center mt-16 bg-background">

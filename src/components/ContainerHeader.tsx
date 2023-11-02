@@ -6,7 +6,7 @@ export default function ContainerHeader({
 }: {
   options?: HeaderOptions;
 }) {
-  function calculateButtonSpacing(index) {
+  function calculateButtonSpacing(index: number) {
     return index === 0 ? { right: "1rem" } : { right: `${index + 6}rem` };
   }
   return (
@@ -19,6 +19,7 @@ export default function ContainerHeader({
             <div
               className="absolute top-2 w-20 text-center"
               style={calculateButtonSpacing(index)}
+              key={index}
             >
               <Link to={button.path} onClick={button.function}>
                 <div className="bg-primary font-bold outline outline-2 px-2 cursor-pointer">
