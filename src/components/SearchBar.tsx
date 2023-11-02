@@ -1,12 +1,6 @@
 import { useState } from "react";
 
-type Props = {
-  value: string;
-  setValue: React.Dispatch<React.SetStateAction<string>>;
-  placeholder: string;
-};
-
-export default function SearchBar({ placeholder }: Props) {
+export default function SearchBar({ placeholder }: { placeholder: string }) {
   const [value, setValue] = useState("");
 
   return (
