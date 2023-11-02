@@ -11,6 +11,7 @@ export default class MovieBucketAPI {
     };
     let body;
 
+
     if (method !== "get") {
       body = JSON.stringify(data);
     } else {
@@ -23,6 +24,7 @@ export default class MovieBucketAPI {
     }
 
     try {
+      console.log("body in api", body);
       const response = await fetch(url, {
         method,
         headers,

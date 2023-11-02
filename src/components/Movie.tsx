@@ -18,7 +18,7 @@ const NO_IMAGE_FOUND = "../public/No image.png";
  *
  *  MovieList -> Movie
  */
-export default function Movie({ movie, deleteMovie }: MovieProps) {
+export default function Movie({ movie }: MovieProps) {
   const [isWatched, setIsWatched] = useState(movie.is_watched);
   const [isBioOpen, setIsBioOpen] = useState(false);
   const { id } = useParams();
@@ -36,13 +36,13 @@ export default function Movie({ movie, deleteMovie }: MovieProps) {
     setIsBioOpen(!isBioOpen);
   }
 
-//   async function deleteMovie() {
-//     try {
-//         await MovieBucketAPI.deleteMovie(id, movie.id.toString())
-//     } catch(err){
-//         throw new Error(JSON.stringify(err))
-//     }
-//   }
+  async function deleteMovie() {
+    try {
+      await MovieBucketAPI.deleteMovie(id, movie.id.toString());
+    } catch (err) {
+      throw new Error(JSON.stringify(err));
+    }
+  }
   return (
     <div className="flex flex-col text-white justify-center items-center font-bold outline outline-black outline-2 w-60 md:w-80 lg:w-96 max-w-sm py-6 bg-secondary shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] md:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
       {movie.title}
@@ -64,11 +64,12 @@ export default function Movie({ movie, deleteMovie }: MovieProps) {
           className="w-min border-2 border-black text-black bg-primary cursor-pointer px-2 py-1.5 text-xs font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
           onClick={toggleBio}
         >
-          <p>{ isBioOpen ? 'Close' : 'Synopsis'}</p>
+          <p>{isBioOpen ? "Close" : "Synopsis"}</p>
         </div>
         <div
           className="w-min border-2 border-black text-black bg-red-500 cursor-pointer px-2 py-1.5 text-xs font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
-          onClick={() => deleteMovie(id, movie.id)}
+          onClick={deleteMovie}
+          //   onClick={() => deleteMovie(id, movie.id)}
         >
           <p>Remove</p>
         </div>
