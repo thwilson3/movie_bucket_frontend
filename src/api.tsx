@@ -18,6 +18,8 @@ export default class MovieBucketAPI {
       if (params.toString()) {
         url += `?${params.toString()}`;
       }
+      console.log("params", params);
+
     }
 
     try {
@@ -40,30 +42,54 @@ export default class MovieBucketAPI {
 
   static async login(username: string, password: string) {
     const data = { username, password };
-    return await this.request("/login", data, "post");
+    return await this.request("/login", data, "POST");
   }
 
   static async signup(username: string, password: string, email: string) {
     const data = { username, password, email };
-    return await this.request("/signup", data, "post")
+    return await this.request("/signup", data, "POST");
   }
 
   static async getBuckets() {
-    return await this.request("users/buckets")
+    return await this.request("users/buckets");
   }
 
   static async getSingleBucket(bucket_id: string) {
-    const data = { bucket_id }
-    return await this.request("users/buckets", data)
+    const data = { bucket_id };
+    return await this.request("users/buckets", data);
   }
 
-  static async createBucket(bucket_name: string, description: string, genre: string){
-    const data = { bucket_name, description, genre }
-    return await this.request("users/buckets", data, "post")
+  static async createBucket(
+    bucket_name: string,
+    description: string,
+    genre: string
+  ) {
+    const data = { bucket_name, description, genre };
+    return await this.request("users/buckets", data, "POST");
   }
 
   static async getMovies(bucket_id: string) {
-    const data = { bucket_id }
-    return await this.request("users/buckets/movies", data)
+    const data = { bucket_id };
+    return await this.request("users/buckets/movies", data);
+  }
+
+  static async updateMovieWatchStatus(bucket_id: string, movie_id: string) {
+    const data = { bucket_id, movie_id };
+    return await this.request("users/buckets/movies", data, "PATCH");
+  }
+
+  static async deleteMovie(bucket_id: string, movie_id: string) {
+    console.log("bucketid in api delete", bucket_id);
+
+    const data = { bucket_id, movie_id };
+
+    console.log("data in delete api", data);
+
+    return await this.request("users/buckets/movies", data, "DELETE");
+  }
+
+  static async getInviteCode(bucket_id: string) {
+    const data = { bucket_id };
+    return await this.request("users/buckets/invite", data);
   }
 }
