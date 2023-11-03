@@ -2,6 +2,7 @@ import { useState } from "react";
 import { MovieType } from "../interfaces";
 import { useParams } from "react-router-dom";
 import MovieBucketAPI from "../api";
+import { MdClose } from "react-icons/md";
 
 interface MovieProps {
   movie: MovieType;
@@ -44,13 +45,18 @@ export default function Movie({ movie }: MovieProps) {
     }
   }
   return (
-    <div className="flex flex-col text-white justify-center items-center font-bold outline outline-black outline-2 w-60 md:w-80 lg:w-96 max-w-sm py-6 bg-secondary shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] md:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+    <div className="flex flex-col relative text-white justify-center items-center font-bold outline outline-black outline-2 w-60 md:w-80 lg:w-96 max-w-sm py-6 bg-background shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] md:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
       {movie.title}
       <img
         src={movie.image ? movie.image : NO_IMAGE_FOUND}
         alt={`${movie.title} poster`}
         height="300"
         width="200"
+      />
+      <MdClose
+        className="absolute top-2 right-2 cursor-pointer w-6 h-6 outline outline-2 outline-black text-black bg-red-500"
+        //   onClick={() => deleteMovie(id, movie.id)}
+        onClick={deleteMovie}
       />
       <div className="flex flex-row items-center gap-4">
         <div
@@ -65,13 +71,6 @@ export default function Movie({ movie }: MovieProps) {
           onClick={toggleBio}
         >
           <p>{isBioOpen ? "Close" : "Synopsis"}</p>
-        </div>
-        <div
-          className="w-min border-2 border-black text-black bg-red-500 cursor-pointer px-2 py-1.5 text-xs font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
-          onClick={deleteMovie}
-          //   onClick={() => deleteMovie(id, movie.id)}
-        >
-          <p>Remove</p>
         </div>
       </div>
       {isBioOpen ? (
