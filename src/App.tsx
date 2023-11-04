@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { UserContext } from "./UserContext";
 
 import Navigation from "./components/Navigation";
@@ -7,6 +7,8 @@ import RoutesList from "./RoutesList";
 
 export default function App() {
   const [currentUser, setCurrentUser] = useState(null);
+
+  const userContext = useMemo(() => (currentUser), [currentUser]);
 
   async function login({
     username,
@@ -48,7 +50,7 @@ export default function App() {
   }
 
   return (
-    <UserContext.Provider value={{ currentUser, setCurrentUser }}>
+    <UserContext.Provider value={{ userContext }}>
       <>
         <Navigation />
         <RoutesList login={login} signup={signup} logout={logout} />
