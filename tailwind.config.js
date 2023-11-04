@@ -15,7 +15,7 @@ export default {
       //   mono: ['var(--font-SF-Mono)']
       // },
       dropShadow: {
-        primaryGlow: "0 0 3px #56b02d",
+        primaryGlow: "0 0 3px #ff9d42",
         whiteGlow: "0 0 3px #b5c0b7",
       }
     },

@@ -1,14 +1,12 @@
-
-
 export interface MovieType {
-  id: number;
+  id: string;
   title: string;
   image?: string;
   release_date?: string;
   runtime?: string;
   genre?: string;
   bio?: string;
-  is_watched: boolean;
+  is_watched?: boolean;
 }
 
 export interface BucketType {
@@ -32,21 +30,54 @@ export interface BucketLinkType {
   expiration_date: string;
 }
 
+export type NewMovieType = {
+  bucket_id: string;
+  title: string;
+  image?: string;
+  release_date?: string;
+  runtime?: string;
+  genre?: string;
+  bio?: string;
+  is_watched?: boolean;
+};
+
 export type UserContextType = {
   userContext?: UserType | null;
 };
 
 export type HeaderOptions = {
   title?: string;
-  buttons: OptionButtonType[]
+  buttons: OptionButtonType[];
 };
 
 export type OptionButtonType = {
-    text: string;
-    function?: Function;
-    path: string;
-}
+  text: string;
+  function?: () => void;
+  path: string;
+};
 
-export type LoginFunction = (username: string, password: string) => void;
-export type SignupFunction = (username: string, password: string, email: string) => void;
+export type RouteParams = {
+  id: string;
+};
+
+export type LoginFunction = (props: {
+  username: string;
+  password: string;
+}) => void;
 export type LogoutFunction = () => void;
+
+export type SignupFunction = (
+  username: string,
+  password: string,
+  email: string
+) => void;
+
+export type DeleteMovieFunction = (
+  id: string,
+  movieId: string
+) => Promise<void>;
+
+export type AddMovieFunction = (movie: NewMovieType) => Promise<void>;
+
+export type FetchSearchResultsFunction = (searchTerm: string) => Promise<void>;
+

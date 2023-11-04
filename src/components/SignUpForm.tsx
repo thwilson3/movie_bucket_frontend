@@ -24,7 +24,7 @@ export default function SignUpForm({ signup }) {
    *
    * Calls login func prop and, if not successful, sets errors.
    */
-  async function handleSubmit(evt) {
+  async function handleSubmit(evt: React.FormEvent<HTMLFormElement>) {
     evt.preventDefault();
     try {
       await signup(formData);
@@ -35,7 +35,7 @@ export default function SignUpForm({ signup }) {
   }
 
   /** Update form data field */
-  function handleChange(evt) {
+  function handleChange(evt: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = evt.target;
     setFormData((l) => ({ ...l, [name]: value }));
   }
@@ -84,7 +84,6 @@ export default function SignUpForm({ signup }) {
         <div className="flex justify-end">
           <button
             className="bg-primary mt-4 font-bold w-20 p-2 outline outline-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
-            onClick={handleSubmit}
           >
             Enter
           </button>

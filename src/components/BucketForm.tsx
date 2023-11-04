@@ -9,28 +9,26 @@ export default function BucketForm() {
     description: "",
     genre: "",
   });
-  const [formErrors, setFormErrors] = useState([]);
-
-  console.debug("BucketForm", "formData=", formData, "formErrors", formErrors);
+  //   const [formErrors, setFormErrors] = useState([]);
 
   /** Handle form submit:
    *
    * Calls login func prop and, if not successful, sets errors.
    */
-  async function handleSubmit(evt) {
+  async function handleSubmit(evt: React.FormEvent<HTMLFormElement>) {
     evt.preventDefault();
     try {
       console.log("inside create function");
       const { bucketName, description, genre } = formData;
       await MovieBucketAPI.createBucket(bucketName, description, genre);
       navigate("/buckets");
-    } catch (err) {
-      setFormErrors(err);
+    } catch (err: unknown) {
+      console.debug(err);
     }
   }
 
   /** Update form data field */
-  function handleChange(evt) {
+  function handleChange(evt: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = evt.target;
     setFormData((l) => ({ ...l, [name]: value }));
   }
@@ -87,10 +85,7 @@ export default function BucketForm() {
         ) : null} */}
 
         <div className="flex justify-end">
-          <button
-            className="bg-primary mt-4 font-bold w-20 p-2 outline outline-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
-            onClick={handleSubmit}
-          >
+          <button className="bg-primary mt-4 font-bold w-20 p-2 outline outline-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
             Create
           </button>
         </div>

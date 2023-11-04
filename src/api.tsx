@@ -1,3 +1,5 @@
+import { NewMovieType } from "./interfaces";
+
 const BASE_URL = "http://localhost:5001";
 
 export default class MovieBucketAPI {
@@ -38,7 +40,7 @@ export default class MovieBucketAPI {
 
       return await response.json();
     } catch (err: unknown) {
-      throw [err.text];
+      console.error(err);
     }
   }
 
@@ -75,7 +77,7 @@ export default class MovieBucketAPI {
     return await this.request("users/buckets/movies", data);
   }
 
-  static async updateMovieWatchStatus(bucket_id: number, movie_id: string) {
+  static async updateMovieWatchStatus(bucket_id: string, movie_id: string) {
     const data = { bucket_id, movie_id };
     return await this.request("users/buckets/movies", data, "PATCH");
   }
@@ -90,9 +92,8 @@ export default class MovieBucketAPI {
     return await this.request("users/buckets/movies", data, "DELETE");
   }
 
-  static async addMovie(id:number, title: string, image: string, release_date: string, bio: string){
-    const data = { bucket_id:id, title, image, release_date, bio }
-    return await this.request("users/buckets/movies", data, "POST")
+  static async addMovie(movie: NewMovieType){
+    return await this.request("users/buckets/movies", movie, "POST")
   }
 
   static async getInviteCode(bucket_id: string) {

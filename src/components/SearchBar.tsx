@@ -1,15 +1,16 @@
 import { useState } from "react";
+import { FetchSearchResultsFunction } from "../interfaces";
 
 export default function SearchBar({
   placeholder,
   fetchSearchResults,
 }: {
   placeholder: string;
-  fetchSearchResults: Function;
+  fetchSearchResults: FetchSearchResultsFunction
 }) {
   const [searchTerm, setSearchTerm] = useState("");
 
-  function handleSubmit(evt) {
+  function handleSubmit(evt: React.FormEvent<HTMLFormElement>) {
     evt.preventDefault();
     fetchSearchResults(searchTerm);
   }

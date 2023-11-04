@@ -1,4 +1,4 @@
-import { MovieType } from "../interfaces";
+import { AddMovieFunction, DeleteMovieFunction, MovieType } from "../interfaces";
 
 import Movie from "./Movie";
 
@@ -8,8 +8,8 @@ export default function MovieList({
   addMovie,
 }: {
   movies: MovieType[];
-  deleteMovie: Function;
-  addMovie: Function;
+  deleteMovie: DeleteMovieFunction;
+  addMovie: AddMovieFunction;
 }) {
   return (
     <div className="flex flex-col gap-6">

@@ -1,13 +1,13 @@
 import { useState } from "react";
-import { MovieType } from "../interfaces";
+import { AddMovieFunction, DeleteMovieFunction, MovieType, RouteParams } from "../interfaces";
 import { useParams } from "react-router-dom";
 import { MdAdd, MdClose } from "react-icons/md";
 import MovieBucketAPI from "../api";
 
 interface MovieProps {
   movie: MovieType;
-  deleteMovie: Function;
-  addMovie: Function;
+  deleteMovie: DeleteMovieFunction;
+  addMovie: AddMovieFunction;
 }
 
 const NO_IMAGE_FOUND = "../public/No image.png";
@@ -23,7 +23,8 @@ const NO_IMAGE_FOUND = "../public/No image.png";
 export default function Movie({ movie, deleteMovie, addMovie }: MovieProps) {
   const [isWatched, setIsWatched] = useState(movie.is_watched);
   const [isBioOpen, setIsBioOpen] = useState(false);
-  const { id } = useParams();
+  const { id = '' } = useParams<RouteParams>();
+
 
   async function toggleWatched() {
     try {
@@ -42,8 +43,27 @@ export default function Movie({ movie, deleteMovie, addMovie }: MovieProps) {
     deleteMovie(id, movie.id.toString());
   }
 
+//   id: string,
+//     title: string,
+//     image: string,
+//     release_date: string,
+//     bio: string
+//   )
+
   function handleAdd() {
-    addMovie(id, movie.title, movie.image, movie.release_date, movie.bio)
+    if(movie){
+        const newMovie = {
+            bucket_id: id,
+            title: movie.title,
+            image: movie?.image ? movie.image : NO_IMAGE_FOUND,
+            release_date: movie?.release_date,
+            bio: movie?.bio
+        }
+        addMovie(newMovie)
+    } else {
+        console.log("oops");
+
+    }
   }
 
   return (

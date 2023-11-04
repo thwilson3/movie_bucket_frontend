@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import MainContainer from "./MainContainer";
@@ -7,6 +7,7 @@ import LoadingSpinner from "./LoadingSpinner";
 import MovieList from "./MovieList";
 import SearchBar from "./SearchBar";
 import InviteModal from "./InviteModal";
+import { MovieType, NewMovieType } from "../interfaces";
 
 export default function MoviesContainer() {
   const [movies, setMovies] = useState([]);
@@ -14,12 +15,12 @@ export default function MoviesContainer() {
   const [inviteCode, setInviteCode] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSearch, setIsSearch] = useState(false);
-  const { id } = useParams();
+  const { id = '' } = useParams();
 
   console.log("moviesContainer params", id, typeof id);
 
   const headerOptions = {
-    title: bucket?.bucket_name,
+    title: `${bucket?.bucket_name}`,
     buttons: [
       {
         text: "edit",
@@ -96,23 +97,11 @@ export default function MoviesContainer() {
     }
   }
 
-  async function addMovie(
-    id: number,
-    title: string,
-    image: string,
-    release_date: string,
-    bio: string
-  ) {
+  async function addMovie(movie: NewMovieType) {
     try {
-      const response = await MovieBucketAPI.addMovie(
-        id,
-        title,
-        image,
-        release_date,
-        bio
-      );
+      const response = await MovieBucketAPI.addMovie(movie);
     } catch (err) {
-      throw new Error(err);
+      console.error(err);
     }
   }
 

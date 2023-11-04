@@ -13,16 +13,19 @@ export default function ContainerHeader({
     return index === 0 ? { right: "1rem" } : { right: `${index * 6 + 1}rem` };
   }
 
-  function goBack(){
-    navigate(-1)
+  function goBack() {
+    navigate(-1);
   }
+
   return (
     <>
       <div className="flex py-2 md:py-2 lg:py-2 font-bold bg-accent h-10 rounded-t-md justify-center outline outline-2 top-0 left-0 absolute w-full">
-        {options?.title ? options.title : ''}
+        {options?.title ? options.title : ""}
       </div>
-      <MdUndo className="absolute left-2 top-2 h-6 w-10 cursor-pointer rounded-full bg-primary outline outline-2"
-      onClick={goBack}/>
+      <MdUndo
+        className="absolute left-2 top-2 h-6 w-10 cursor-pointer rounded-full bg-primary outline outline-2"
+        onClick={goBack}
+      />
       {options?.buttons.length
         ? options?.buttons.map((button, index) => (
             <div

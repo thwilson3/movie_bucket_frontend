@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { UserContext } from "../UserContext";
-import { LoginFunction, LogoutFunction, UserContextType } from "../interfaces";
+import { LogoutFunction, UserContextType } from "../interfaces";
 
 import AnonOptions from "./AnonOptions";
 import LandingOptions from "./LandingOptions";
