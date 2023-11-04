@@ -14,39 +14,27 @@ import WelcomeContainer from "./WelcomeContainer";
  *
  * App -> Homepage -> BucketList, Navigation
  */
-export default function Homepage({
-  login,
-  logout,
-}: {
-  login: LoginFunction;
-  logout: LogoutFunction;
-}) {
-  const { currentUser } = useContext(UserContext) as UserContextType;
+export default function Homepage({ logout }: { logout: LogoutFunction }) {
+  const { userContext } = useContext(UserContext) as UserContextType;
 
   const userOptions = {
-    title: currentUser?.username,
-    buttons: [{
-      text: "logout",
-      function: logout,
-      path: "/",
-    }]
+    title: userContext?.username,
+    buttons: [
+      {
+        text: "logout",
+        function: logout,
+        path: "/",
+      },
+    ],
   };
 
-  const loginOptions = {
-    buttons: [{
-      text: "login",
-      function: login,
-      path: "login",
-    }]
-  };
-
-  console.log("currentUser", currentUser);
+  console.log("userContext", userContext);
   return (
     <>
-      {currentUser === null ? (
+      {userContext === null ? (
         <>
           <WelcomeContainer />
-          <MainContainer >
+          <MainContainer>
             <AnonOptions />
           </MainContainer>
         </>
