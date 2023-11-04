@@ -9,10 +9,10 @@ import LoadingSpinner from "./LoadingSpinner";
 
 export default function BucketsContainer() {
   const [buckets, setBuckets] = useState([]);
-  const { currentUser } = useContext(UserContext) as UserContextType;
+  const { userContext } = useContext(UserContext) as UserContextType;
 
   const headerOptions = {
-    title: `${currentUser?.username}'s Buckets`,
+    title: `${userContext?.username}'s Buckets`,
     buttons: [{
       text: "new",
       path: "add",
@@ -24,8 +24,6 @@ export default function BucketsContainer() {
   }, []);
 
   async function getBuckets() {
-    console.log(currentUser);
-
     const newBuckets = await MovieBucketAPI.getBuckets();
     setBuckets(newBuckets);
     console.log(newBuckets);
