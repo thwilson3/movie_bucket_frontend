@@ -33,8 +33,7 @@ export interface BucketLinkType {
 }
 
 export type UserContextType = {
-  currentUser?: UserType | null;
-  setCurrentUser: (user: UserType | null) => void;
+  userContext?: UserType | null;
 };
 
 export type HeaderOptions = {
