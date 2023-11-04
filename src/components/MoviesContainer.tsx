@@ -74,7 +74,7 @@ export default function MoviesContainer() {
     setIsSearch(!isSearch)
   }
 
-  async function fetchSearchResults(searchTerm){
+  async function fetchSearchResults(searchTerm: string){
     console.log("searchTerm in search bar", searchTerm);
 
     try{
@@ -87,7 +87,7 @@ export default function MoviesContainer() {
     }
   }
 
-  async function deleteMovie(id, movieId) {
+  async function deleteMovie(id: string, movieId: number) {
     console.log("delete movie", id, movieId);
     try {
         const response = await MovieBucketAPI.deleteMovie(id, movieId.toString())
@@ -98,7 +98,7 @@ export default function MoviesContainer() {
     }
   }
 
-  async function addMovie(id, title, image, release_date, bio){
+  async function addMovie(id: number, title: string, image: string, release_date: string, bio: string){
     try {
       const response = await MovieBucketAPI.addMovie(id, title, image, release_date, bio)
     } catch(err){

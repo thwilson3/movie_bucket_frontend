@@ -75,7 +75,7 @@ export default class MovieBucketAPI {
     return await this.request("users/buckets/movies", data);
   }
 
-  static async updateMovieWatchStatus(bucket_id: string, movie_id: string) {
+  static async updateMovieWatchStatus(bucket_id: number, movie_id: string) {
     const data = { bucket_id, movie_id };
     return await this.request("users/buckets/movies", data, "PATCH");
   }
@@ -90,7 +90,7 @@ export default class MovieBucketAPI {
     return await this.request("users/buckets/movies", data, "DELETE");
   }
 
-  static async addMovie(id:string, title: string, image: string, release_date: string, bio: string){
+  static async addMovie(id:number, title: string, image: string, release_date: string, bio: string){
     const data = { bucket_id:id, title, image, release_date, bio }
     return await this.request("users/buckets/movies", data, "POST")
   }
