@@ -94,4 +94,9 @@ export default class MovieBucketAPI {
     const data = { bucket_id };
     return await this.request("users/buckets/invite", data);
   }
+
+  static async getSearchResults(query: string) {
+    const data = { query };
+    return await this.request("api/search/movies", data);
+  }
 }
