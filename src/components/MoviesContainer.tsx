@@ -67,16 +67,7 @@ export default function MoviesContainer() {
     }
   }
 
-  // const getResults = useCallback(async (searchTerm) => {
-  //   try {
-  //     const movies = await MovieBucketAPI.getSearchResults(searchTerm);
-  //     setMovies(movies);
-  //   } catch (err) {
-  //     throw new Error(JSON.stringify(err));
-  //   }
-  // }, []);
-
-  async function getResults(searchTerm){
+  async function fetchSearchResults(searchTerm){
     console.log("searchTerm in search bar", searchTerm);
 
     try{
@@ -89,24 +80,24 @@ export default function MoviesContainer() {
     }
   }
 
-  // async function deleteMovie(id, movieId) {
-  //   console.log("delete movie", id, movieId);
-  //   try {
-  //       const response = await MovieBucketAPI.deleteMovie(id, movieId.toString())
-  //       console.log("response in delete movie", response);
-  //       getMovies()
-  //   } catch(err){
-  //       throw new Error(JSON.stringify(err))
-  //   }
-  // }
+  async function deleteMovie(id, movieId) {
+    console.log("delete movie", id, movieId);
+    try {
+        const response = await MovieBucketAPI.deleteMovie(id, movieId.toString())
+        console.log("response in delete movie", response);
+        getMovies()
+    } catch(err){
+        throw new Error(JSON.stringify(err))
+    }
+  }
 
   if (!movies) return <LoadingSpinner />;
 
   return (
     <MainContainer headerOptions={headerOptions}>
       {isModalOpen ? <InviteModal toggleModal={toggleModal} inviteCode={inviteCode} /> : null}
-      <SearchBar placeholder="Find a movie" getResults={getResults} />
-      <MovieList movies={movies} />
+      <SearchBar placeholder="Find a movie" fetchSearchResults={fetchSearchResults} />
+      <MovieList movies={movies} deleteMovie={deleteMovie} />
     </MainContainer>
   );
 }

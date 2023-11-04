@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { MovieType } from "../interfaces";
 import { useParams } from "react-router-dom";
-import MovieBucketAPI from "../api";
 import { MdClose } from "react-icons/md";
+import MovieBucketAPI from "../api";
 
 interface MovieProps {
   movie: MovieType;
@@ -19,7 +19,7 @@ const NO_IMAGE_FOUND = "../public/No image.png";
  *
  *  MovieList -> Movie
  */
-export default function Movie({ movie }: MovieProps) {
+export default function Movie({ movie, deleteMovie }: MovieProps) {
   const [isWatched, setIsWatched] = useState(movie.is_watched);
   const [isBioOpen, setIsBioOpen] = useState(false);
   const { id } = useParams();
@@ -37,16 +37,13 @@ export default function Movie({ movie }: MovieProps) {
     setIsBioOpen(!isBioOpen);
   }
 
-  async function deleteMovie() {
-    try {
-      await MovieBucketAPI.deleteMovie(id, movie.id.toString());
-    } catch (err) {
-      throw new Error(JSON.stringify(err));
-    }
+  function handleDelete() {
+    deleteMovie(id, movie.id.toString());
   }
+
   return (
-    <div className="flex flex-col relative text-black justify-center items-center font-bold outline outline-black outline-2 w-60 md:w-80 lg:w-96 max-w-sm py-6 bg-background shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] md:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
-      {movie.title}
+    <div className="flex flex-col relative text-black justify-center items-center font-bold outline rounded-md outline-black outline-2 w-60 md:w-80 lg:w-96 max-w-sm py-8 bg-background shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] md:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+      <h1 className="text-center mt-2 w-2/3 outline outline-2 rounded-md bg-black text-white p-2">{movie.title}</h1>
       <img
         className="outline outline-2 m-3"
         src={
@@ -61,17 +58,17 @@ export default function Movie({ movie }: MovieProps) {
       <MdClose
         className="absolute top-2 right-2 cursor-pointer w-6 h-6 outline outline-2 outline-black text-black bg-red-500"
         //   onClick={() => deleteMovie(id, movie.id)}
-        onClick={deleteMovie}
+        onClick={handleDelete}
       />
       <div className="flex flex-row items-center gap-4">
         <div
-          className="w-min border-2 border-black text-black bg-primary cursor-pointer px-2 py-1.5 text-xs font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
+          className="w-min border-2 border-black text-black bg-primary cursor-pointer px-2 py-1.5 text-xs rounded-full font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
           onClick={toggleBio}
         >
           <p>{isBioOpen ? "Close" : "Synopsis"}</p>
         </div>
         <div
-          className="w-min border-2 border-black cursor-pointer px-2 py-1.5 text-black text-xs font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
+          className="w-min border-2 border-black cursor-pointer px-2 py-1.5 text-black text-xs font-bold rounded-full shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
           style={{ backgroundColor: isWatched ? "#56b02d" : "#ff9d42" }}
           onClick={toggleWatched}
         >
