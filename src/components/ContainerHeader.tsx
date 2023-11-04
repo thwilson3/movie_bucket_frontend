@@ -7,12 +7,12 @@ export default function ContainerHeader({
   options?: HeaderOptions;
 }) {
   function calculateButtonSpacing(index: number) {
-    return index === 0 ? { right: "1rem" } : { right: `${index + 6}rem` };
+    return index === 0 ? { right: "1rem" } : { right: `${index * 6 + 1}rem` };
   }
   return (
     <>
-      <div className="flex py-2 md:py-2 lg:py-2 font-bold bg-accent rounded-t-md justify-center outline outline-2 top-0 left-0 absolute w-full">
-        {options?.title ? options.title : "welcome"}
+      <div className="flex py-2 md:py-2 lg:py-2 font-bold bg-accent h-10 rounded-t-md justify-center outline outline-2 top-0 left-0 absolute w-full">
+        {options?.title ? options.title : ''}
       </div>
       {options?.buttons.length
         ? options?.buttons.map((button, index) => (
