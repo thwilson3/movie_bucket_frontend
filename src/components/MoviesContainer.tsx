@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import MainContainer from "./MainContainer";
@@ -67,6 +67,28 @@ export default function MoviesContainer() {
     }
   }
 
+  // const getResults = useCallback(async (searchTerm) => {
+  //   try {
+  //     const movies = await MovieBucketAPI.getSearchResults(searchTerm);
+  //     setMovies(movies);
+  //   } catch (err) {
+  //     throw new Error(JSON.stringify(err));
+  //   }
+  // }, []);
+
+  async function getResults(searchTerm){
+    console.log("searchTerm in search bar", searchTerm);
+
+    try{
+      const movies = await MovieBucketAPI.getSearchResults(searchTerm)
+      console.log("movies in search bar", movies);
+      setMovies(movies)
+
+    } catch(err){
+      throw new Error(JSON.stringify(err))
+    }
+  }
+
   // async function deleteMovie(id, movieId) {
   //   console.log("delete movie", id, movieId);
   //   try {
@@ -83,7 +105,7 @@ export default function MoviesContainer() {
   return (
     <MainContainer headerOptions={headerOptions}>
       {isModalOpen ? <InviteModal toggleModal={toggleModal} inviteCode={inviteCode} /> : null}
-      <SearchBar placeholder="Find a movie" />
+      <SearchBar placeholder="Find a movie" getResults={getResults} />
       <MovieList movies={movies} />
     </MainContainer>
   );
