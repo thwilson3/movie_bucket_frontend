@@ -90,6 +90,11 @@ export default class MovieBucketAPI {
     return await this.request("users/buckets/movies", data, "DELETE");
   }
 
+  static async addMovie(id:string, title: string, image: string, release_date: string, bio: string){
+    const data = { bucket_id:id, title, image, release_date, bio }
+    return await this.request("users/buckets/movies", data, "POST")
+  }
+
   static async getInviteCode(bucket_id: string) {
     const data = { bucket_id };
     return await this.request("users/buckets/invite", data);
