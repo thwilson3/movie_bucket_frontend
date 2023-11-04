@@ -11,7 +11,7 @@ export default function ContainerHeader({
   }
   return (
     <>
-      <div className="flex py-2 md:py-2 lg:py-2 font-bold bg-accent justify-center outline outline-2 top-0 left-0 absolute w-full">
+      <div className="flex py-2 md:py-2 lg:py-2 font-bold bg-accent rounded-t-md justify-center outline outline-2 top-0 left-0 absolute w-full">
         {options?.title ? options.title : "welcome"}
       </div>
       {options?.buttons.length
@@ -22,7 +22,7 @@ export default function ContainerHeader({
               key={index}
             >
               <Link to={button.path} onClick={button.function}>
-                <div className="bg-primary font-bold outline outline-2 px-2 cursor-pointer">
+                <div className="bg-primary font-bold outline outline-2 px-2 cursor-pointer rounded-full">
                   {button.text}
                 </div>
               </Link>
