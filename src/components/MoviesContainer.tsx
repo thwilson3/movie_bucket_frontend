@@ -13,13 +13,14 @@ export default function MoviesContainer() {
   const [bucket, setBucket] = useState([]);
   const [inviteCode, setInviteCode] = useState('')
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isSearch, setIsSearch] = useState(false)
   const { id } = useParams();
 
   console.log("moviesContainer params", id, typeof id);
 
 
   const headerOptions = {
-    title: bucket?.bucket_name,
+    // title: bucket?.bucket_name,
     buttons: [
       {
         text: "edit",
@@ -30,6 +31,10 @@ export default function MoviesContainer() {
         function: toggleModal,
         path: "",
       },
+      {
+        text: "add",
+        function: toggleSearch,
+      }
     ],
   };
 
@@ -48,8 +53,6 @@ export default function MoviesContainer() {
         MovieBucketAPI.getSingleBucket(id),
         MovieBucketAPI.getInviteCode(id)
       ]);
-      console.log(bucket_link);
-
       setMovies(movies);
       setBucket(bucket);
       setInviteCode(bucket_link.invite_code)
@@ -65,6 +68,10 @@ export default function MoviesContainer() {
     } catch(err){
       throw new Error(JSON.stringify(err))
     }
+  }
+
+  function toggleSearch() {
+    setIsSearch(!isSearch)
   }
 
   async function fetchSearchResults(searchTerm){
@@ -91,13 +98,24 @@ export default function MoviesContainer() {
     }
   }
 
+  async function addMovie(id, title, image, release_date, bio){
+    try {
+      const response = await MovieBucketAPI.addMovie(id, title, image, release_date, bio)
+    } catch(err){
+      throw new Error(err)
+    }
+
+  }
+
   if (!movies) return <LoadingSpinner />;
 
   return (
     <MainContainer headerOptions={headerOptions}>
       {isModalOpen ? <InviteModal toggleModal={toggleModal} inviteCode={inviteCode} /> : null}
+      { isSearch ?
       <SearchBar placeholder="Find a movie" fetchSearchResults={fetchSearchResults} />
-      <MovieList movies={movies} deleteMovie={deleteMovie} />
+      : null }
+      <MovieList movies={movies} deleteMovie={deleteMovie} addMovie={addMovie} />
     </MainContainer>
   );
 }
