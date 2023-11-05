@@ -28,7 +28,7 @@ export default function RoutesList({
 
   return (
     <Routes>
-      <Route path="/" element={<Homepage login={login} logout={logout} />} />
+      <Route path="/" element={<Homepage logout={logout} />} />
       <Route path="/login" element={<LoginContainer login={login} />} />
       <Route path="/signup" element={<SignUpForm signup={signup} />} />
       {/* <Route path="/buckets" element={<BucketsContainer />} />

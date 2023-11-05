@@ -55,7 +55,7 @@ export type UserContextType = {
 };
 
 export type HeaderOptions = {
-  title?: string | undefined;
+  title?: string;
   buttons: OptionButtonType[];
 };
 
@@ -76,11 +76,11 @@ export type LoginFunction = (props: {
 
 export type LogoutFunction = () => void;
 
-export type SignupFunction = (
+export type SignupFunction = (props: {
   username: string,
   password: string,
   email: string
-) => void;
+}) => void;
 
 export type DeleteMovieFunction = (
   id: string,

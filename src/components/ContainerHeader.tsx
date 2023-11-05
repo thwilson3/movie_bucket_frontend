@@ -20,7 +20,7 @@ export default function ContainerHeader({
   return (
     <>
       <div className="flex py-2 md:py-2 lg:py-2 font-bold bg-accent h-10 rounded-t-md justify-center outline outline-2 top-0 left-0 absolute w-full">
-        {options?.title ? options.title : ""}
+        {options?.title ? options.title : "welcome"}
       </div>
       <MdUndo
         className="absolute left-2 top-2 h-6 w-10 cursor-pointer rounded-full bg-primary outline outline-2"

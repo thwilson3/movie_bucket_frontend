@@ -48,13 +48,6 @@ export default function Movie({ movie, deleteMovie, addMovie }: MovieProps) {
     deleteMovie(id, movie.id.toString());
   }
 
-  //   id: string,
-  //     title: string,
-  //     image: string,
-  //     release_date: string,
-  //     bio: string
-  //   )
-
   function handleAdd() {
     if (movie) {
       const newMovie = {

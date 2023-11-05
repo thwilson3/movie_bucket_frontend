@@ -1,24 +1,15 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { SignupFunction } from "../interfaces";
 
-export default function SignUpForm({ signup }) {
+export default function SignUpForm({ signup }: {signup: SignupFunction}) {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: "",
     password: "",
     email: "",
   });
-  const [formErrors, setFormErrors] = useState([]);
-
-  console.debug(
-    "SignUpForm",
-    "signup=",
-    typeof signup,
-    "formData=",
-    formData,
-    "formErrors",
-    formErrors
-  );
+  // const [formErrors, setFormErrors] = useState([]);
 
   /** Handle form submit:
    *
@@ -30,7 +21,7 @@ export default function SignUpForm({ signup }) {
       await signup(formData);
       navigate("/");
     } catch (err) {
-      setFormErrors(err);
+      console.error(err);
     }
   }
 
