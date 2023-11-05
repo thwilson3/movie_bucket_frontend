@@ -18,10 +18,10 @@ export default function WelcomeContainer() {
           className="right-0 absolute cursor-pointer"
           onClick={closeContainer}
         />
-        <div className="font-bold px-4 py-4 text-sm">
-          Movie Bucket is a place to build watch lists by yourself or
-          collaboratively. Feel free to use a Party Bucket as a guest to build a
-          temporary watch list and roll a random movie.
+        <div className="font-bold px-4 py-4 text-sm text-center">
+          <h1 className="text-lg pb-3">Movie Bucket</h1>
+          A place to build and track watch lists by yourself or
+          collaboratively.
         </div>
       </div>
     </>

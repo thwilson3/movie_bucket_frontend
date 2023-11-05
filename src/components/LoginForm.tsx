@@ -66,7 +66,7 @@ export default function LoginForm({ login }: { login: LoginFunction }) {
 
         <div className="flex justify-end">
           <button className="bg-primary mt-4 font-bold w-20 p-2 outline outline-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-            Enter
+            enter
           </button>
         </div>
       </form>
