@@ -31,10 +31,10 @@ export default function RoutesList({
       <Route path="/" element={<Homepage login={login} logout={logout} />} />
       <Route path="/login" element={<LoginContainer login={login} />} />
       <Route path="/signup" element={<SignUpForm signup={signup} />} />
-      <Route path="/buckets" element={<BucketsContainer />} />
+      {/* <Route path="/buckets" element={<BucketsContainer />} />
       <Route path="/buckets/add" element={<AddBucketContainer />} />
-      <Route path="/buckets/:id" element={<MoviesContainer />} />
-      {/* <Route
+      <Route path="/buckets/:id" element={<MoviesContainer />} /> */}
+      <Route
         path="/buckets"
         element={
           userContext !== null ? <BucketsContainer /> : <Navigate to={"/"} />
@@ -51,7 +51,7 @@ export default function RoutesList({
         element={
           userContext !== null ? <MoviesContainer /> : <Navigate to={"/"} />
         }
-      /> */}
+      />
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );
