@@ -8,8 +8,9 @@ export default {
       colors: {
         primary:'#fff129',
         secondary: '#4a4a4a',
-        accent: '#d7d7d7',
-        background: '#ffffff'
+        accent: '#e5d1ff',
+        secondAccent: '#a79cb6',
+        background: '#fdf1df'
       },
       // fontFamily: {
       //   mono: ['var(--font-SF-Mono)']
