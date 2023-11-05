@@ -41,19 +41,28 @@ export type NewMovieType = {
   is_watched?: boolean;
 };
 
+export type MovieFromSearchType = {
+  title: string;
+  image?: string;
+  release_date?: string;
+  runtime?: string;
+  genre?: string;
+  bio?: string;
+};
+
 export type UserContextType = {
   userContext?: UserType | null;
 };
 
 export type HeaderOptions = {
-  title?: string;
+  title?: string | undefined;
   buttons: OptionButtonType[];
 };
 
 export type OptionButtonType = {
   text: string;
   function?: () => void;
-  path: string;
+  path?: string;
 };
 
 export type RouteParams = {
@@ -64,6 +73,7 @@ export type LoginFunction = (props: {
   username: string;
   password: string;
 }) => void;
+
 export type LogoutFunction = () => void;
 
 export type SignupFunction = (
@@ -80,4 +90,3 @@ export type DeleteMovieFunction = (
 export type AddMovieFunction = (movie: NewMovieType) => Promise<void>;
 
 export type FetchSearchResultsFunction = (searchTerm: string) => Promise<void>;
-
