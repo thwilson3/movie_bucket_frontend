@@ -9,11 +9,11 @@ import {
 } from "./interfaces";
 
 import Homepage from "./components/Homepage";
-import SignUpForm from "./components/SignUpForm";
 import LoginContainer from "./components/LogInContainer";
 import BucketsContainer from "./components/BucketsContainer";
 import MoviesContainer from "./components/MoviesContainer";
 import AddBucketContainer from "./components/AddBucketContainer";
+import SignUpContainer from "./components/SignUpContainer";
 
 export default function RoutesList({
   signup,
@@ -30,7 +30,7 @@ export default function RoutesList({
     <Routes>
       <Route path="/" element={<Homepage logout={logout} />} />
       <Route path="/login" element={<LoginContainer login={login} />} />
-      <Route path="/signup" element={<SignUpForm signup={signup} />} />
+      <Route path="/signup" element={<SignUpContainer signup={signup} />} />
       {/* <Route path="/buckets" element={<BucketsContainer />} />
       <Route path="/buckets/add" element={<AddBucketContainer />} />
       <Route path="/buckets/:id" element={<MoviesContainer />} /> */}
