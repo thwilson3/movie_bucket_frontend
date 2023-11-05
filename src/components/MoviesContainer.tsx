@@ -7,7 +7,7 @@ import LoadingSpinner from "./LoadingSpinner";
 import MovieList from "./MovieList";
 import SearchBar from "./SearchBar";
 import InviteModal from "./InviteModal";
-import { MovieType, NewMovieType } from "../interfaces";
+import { NewMovieType } from "../interfaces";
 
 export default function MoviesContainer() {
   const [movies, setMovies] = useState([]);
@@ -20,7 +20,7 @@ export default function MoviesContainer() {
   console.log("moviesContainer params", id, typeof id);
 
   const headerOptions = {
-    title: `${bucket?.bucket_name}`,
+    title: bucket.bucket_name || "welcome",
     buttons: [
       {
         text: "edit",
@@ -29,7 +29,7 @@ export default function MoviesContainer() {
       {
         text: "invite",
         function: toggleModal,
-        path: "",
+        path: ""
       },
       {
         text: "add",
@@ -57,7 +57,7 @@ export default function MoviesContainer() {
       setBucket(bucket);
       setInviteCode(bucket_link.invite_code);
     } catch (err) {
-      throw new Error(err);
+      console.error(err);
     }
   }
 
@@ -74,7 +74,7 @@ export default function MoviesContainer() {
     setIsSearch(!isSearch);
   }
 
-  async function fetchSearchResults(searchTerm: string) {
+  async function fetchSearchResults(searchTerm: string): Promise<void> {
     console.log("searchTerm in search bar", searchTerm);
 
     try {
@@ -86,7 +86,7 @@ export default function MoviesContainer() {
     }
   }
 
-  async function deleteMovie(id: string, movieId: number) {
+  async function deleteMovie(id: string, movieId: string) {
     console.log("delete movie", id, movieId);
     try {
       const response = await MovieBucketAPI.deleteMovie(id, movieId.toString());
