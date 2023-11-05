@@ -32,35 +32,47 @@ export default function SignUpForm({ signup }: {signup: SignupFunction}) {
   }
 
   return (
-    <div className="bg-inherit opacity-100">
-      <form onSubmit={handleSubmit}>
-      <div className="border-2 flex flex-row border-black mt-8 font-bold shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-          <label className="bg-black outline outline-black outline-2 text-white p-3">email</label>
-          <input
-            name="email"
-            className="px-1 bg-white"
-            value={formData.email}
-            onChange={handleChange}
-            autoComplete="current-email"
-            required
-          />
+    <div className="bg-inherit">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+        <div>
+          <p className="flex flex-col text-sm opacity-60 mt-3 absolute top-16">
+            *all fields required
+          </p>
+
+          <div className="border-2 flex flex-row relative mt-8 border-black font-bold shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+            <label className="bg-black outline outline-black outline-2 text-white p-3">
+              email
+            </label>
+            <input
+              name="email"
+              className="px-1 bg-white w-full"
+              value={formData.email}
+              onChange={handleChange}
+              autoComplete="current-email"
+              required
+            />
+          </div>
         </div>
         <div className="border-2 flex flex-row border-black font-bold shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-          <label className="bg-black outline outline-black outline-2 text-white p-3">username</label>
+          <label className="bg-black outline outline-black outline-2 text-white p-3">
+            username
+          </label>
           <input
             name="username"
-            className="px-1 bg-white"
+            className="px-1 bg-white w-full resize-y"
             value={formData.username}
             onChange={handleChange}
             autoComplete="username"
             required
           />
         </div>
-        <div className="border-2 flex flex-row border-black mt-8 font-bold shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-          <label className="bg-black outline outline-black outline-2 text-white p-3">password</label>
+        <div className="border-2 flex flex-row border-black font-bold shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+          <label className="bg-black outline outline-black outline-2 text-white p-3">
+            password
+          </label>
           <input
             name="password"
-            className="px-1 bg-white"
+            className="px-1 bg-white w-full"
             value={formData.password}
             onChange={handleChange}
             autoComplete="current-password"
@@ -73,10 +85,8 @@ export default function SignUpForm({ signup }: {signup: SignupFunction}) {
         ) : null} */}
 
         <div className="flex justify-end">
-          <button
-            className="bg-primary mt-4 font-bold w-20 p-2 outline outline-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
-          >
-            Enter
+          <button className="bg-primary mt-4 font-bold w-20 p-2 outline outline-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+            submit
           </button>
         </div>
       </form>
