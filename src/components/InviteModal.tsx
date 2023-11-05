@@ -4,7 +4,7 @@ export default function InviteModal({
   toggleModal,
   inviteCode,
 }: {
-  toggleModal: void;
+  toggleModal: () => void;
   inviteCode: string;
 }) {
   return (
