@@ -1,7 +1,12 @@
 import { useState } from "react";
-import { AddMovieFunction, DeleteMovieFunction, MovieType, RouteParams } from "../interfaces";
+import {
+  AddMovieFunction,
+  DeleteMovieFunction,
+  MovieType,
+  RouteParams,
+} from "../interfaces";
 import { useParams } from "react-router-dom";
-import { MdAdd, MdClose } from "react-icons/md";
+import { MdAdd, MdClose, MdOutlineCheck } from "react-icons/md";
 import MovieBucketAPI from "../api";
 
 interface MovieProps {
@@ -23,8 +28,8 @@ const NO_IMAGE_FOUND = "../public/No image.png";
 export default function Movie({ movie, deleteMovie, addMovie }: MovieProps) {
   const [isWatched, setIsWatched] = useState(movie.is_watched);
   const [isBioOpen, setIsBioOpen] = useState(false);
-  const { id = '' } = useParams<RouteParams>();
-
+  const [isAdded, setIsAdded] = useState(false);
+  const { id = "" } = useParams<RouteParams>();
 
   async function toggleWatched() {
     try {
@@ -43,53 +48,57 @@ export default function Movie({ movie, deleteMovie, addMovie }: MovieProps) {
     deleteMovie(id, movie.id.toString());
   }
 
-//   id: string,
-//     title: string,
-//     image: string,
-//     release_date: string,
-//     bio: string
-//   )
+  //   id: string,
+  //     title: string,
+  //     image: string,
+  //     release_date: string,
+  //     bio: string
+  //   )
 
   function handleAdd() {
-    if(movie){
-        const newMovie = {
-            bucket_id: id,
-            title: movie.title,
-            image: movie?.image ? movie.image : NO_IMAGE_FOUND,
-            release_date: movie?.release_date,
-            bio: movie?.bio
-        }
-        addMovie(newMovie)
+    if (movie) {
+      const newMovie = {
+        bucket_id: id,
+        title: movie.title,
+        image: movie?.image ? movie.image : NO_IMAGE_FOUND,
+        release_date: movie?.release_date,
+        bio: movie?.bio,
+      };
+      addMovie(newMovie);
+      setIsAdded(true);
     } else {
-        console.log("oops");
-
+      console.log("oops");
     }
   }
 
   return (
-    <div className="flex flex-col relative text-black justify-center items-center font-bold outline rounded-md outline-black outline-2 w-60 md:w-80 lg:w-96 max-w-sm py-8 bg-background shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] md:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
-      <h1 className="text-center mt-2 w-2/3 outline outline-2 rounded-md bg-black text-white p-2">
+    <div className="flex flex-col relative text-black justify-center items-center font-bold outline rounded-md outline-black outline-2 w-60 md:w-80 lg:w-96 max-w-sm py-8 bg-accent shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] md:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+      <div className="flex flex-col items-center justify-center text-center my-2 w-2/3 outline outline-2 rounded-md bg-secondAccent text-black p-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
         {movie.title}
-      </h1>
-      <img
-        className="outline outline-2 m-3"
-        src={
-          movie.image
-            ? `https://image.tmdb.org/t/p/w500${movie.image}`
-            : NO_IMAGE_FOUND
-        }
-        alt={`${movie.title} poster`}
-        height="300"
-        width="200"
-      />
+        <img
+          className="outline outline-2 m-3"
+          src={
+            movie.image
+              ? `https://image.tmdb.org/t/p/w500${movie.image}`
+              : NO_IMAGE_FOUND
+          }
+          alt={`${movie.title} poster`}
+          height="300"
+          width="200"
+        />
+      </div>
       {movie?.id ? (
         <MdClose
           className="absolute top-2 right-2 cursor-pointer w-6 h-6 outline outline-2 outline-black text-black bg-red-500"
           onClick={handleDelete}
         />
+      ) : isAdded ? (
+        <MdOutlineCheck className="absolute top-2 right-2 w-6 h-6" />
       ) : (
-        <MdAdd className="absolute top-2 right-2 cursor-pointer w-6 h-6 outline outline-2 outline-black text-black bg-green-400"
-        onClick={handleAdd}/>
+        <MdAdd
+          className="absolute top-2 right-2 cursor-pointer w-6 h-6 outline outline-2 outline-black text-black bg-green-400"
+          onClick={handleAdd}
+        />
       )}
       <div className="flex flex-row items-center gap-4">
         <div
