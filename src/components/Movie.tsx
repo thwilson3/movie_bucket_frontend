@@ -68,7 +68,7 @@ export default function Movie({ movie, deleteMovie, addMovie }: MovieProps) {
 
   return (
     <div className="flex flex-col relative text-black justify-center items-center font-bold outline rounded-md outline-black outline-2 w-60 md:w-80 lg:w-96 max-w-sm py-8 bg-accent shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] md:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
-      <div className="flex flex-col items-center justify-center text-center my-2 w-2/3 outline outline-2 rounded-md bg-secondAccent text-black p-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+      <div className="flex flex-col items-center justify-center text-center my-2 w-2/3 text-black p-2">
         {movie.title}
         <img
           className="outline outline-2 m-3"
