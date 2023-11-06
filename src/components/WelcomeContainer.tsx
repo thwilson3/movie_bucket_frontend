@@ -19,6 +19,7 @@ export default function WelcomeContainer() {
           onClick={closeContainer}
         />
         <div className="font-bold px-4 py-4 text-sm text-center">
+          welcome to
           <h1 className="text-lg pb-3">Movie Bucket</h1>
           A place to build and track watch lists by yourself or
           collaboratively.
