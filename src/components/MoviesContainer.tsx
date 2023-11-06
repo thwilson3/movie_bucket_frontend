@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { NewMovieType } from "../interfaces";
+import { BucketType, MovieType, NewMovieType } from "../interfaces";
 
 import MainContainer from "./MainContainer";
 import MovieBucketAPI from "../api";
@@ -10,13 +10,14 @@ import SearchBar from "./SearchBar";
 import InviteModal from "./InviteModal";
 
 export default function MoviesContainer() {
-  const [movies, setMovies] = useState([]);
-  const [bucket, setBucket] = useState([]);
-  const [inviteCode, setInviteCode] = useState("");
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isSearch, setIsSearch] = useState(false);
-  const { id = '' } = useParams();
+  const [movies, setMovies] = useState<MovieType[]>([]);
+  const [bucket, setBucket] = useState<BucketType[]>([]);
+  const [inviteCode, setInviteCode] = useState<string>("");
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [isSearch, setIsSearch] = useState<boolean>(false);
+  const { id = "" } = useParams<string>();
 
+  //TODO: Reconsider how this useEffect is being used
   useEffect(function fetchContentOnMount() {
     getAllContent();
   }, []);
@@ -54,7 +55,6 @@ export default function MoviesContainer() {
   }
 
   async function fetchSearchResults(searchTerm: string): Promise<void> {
-    console.log("searchTerm in search bar", searchTerm);
 
     try {
       const movies = await MovieBucketAPI.getSearchResults(searchTerm);
@@ -66,21 +66,21 @@ export default function MoviesContainer() {
   }
 
   async function deleteMovie(id: string, movieId: string): Promise<void> {
-    console.log("delete movie", id, movieId);
+
     try {
-      const response = await MovieBucketAPI.deleteMovie(id, movieId.toString());
-      console.log("response in delete movie", response);
+      await MovieBucketAPI.deleteMovie(id, movieId.toString());
       getMovies();
     } catch (err) {
       throw new Error(JSON.stringify(err));
     }
   }
 
-  async function addMovie(movie: NewMovieType): Promise<void> {
+  async function addMovie(newMovie: NewMovieType): Promise<void> {
+
     try {
-      const response = await MovieBucketAPI.addMovie(movie);
+      await MovieBucketAPI.addMovie(newMovie);
     } catch (err) {
-      console.error(err);
+      throw new Error(JSON.stringify(err));
     }
   }
 
@@ -94,7 +94,7 @@ export default function MoviesContainer() {
       {
         text: "invite",
         function: toggleModal,
-        path: ""
+        path: "",
       },
       {
         text: "add",
