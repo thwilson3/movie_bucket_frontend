@@ -3,8 +3,8 @@ import { useState } from "react";
 import { TbAlignRight } from "react-icons/tb"
 
 const navItems = [
-  { link: `example.com`, text: "login" },
-  { link: "example2.com", text: "account" },
+  { link: "/login", text: "login" },
+  { link: "/", text: "account" },
 ];
 
 export default function Navigation() {
@@ -27,7 +27,7 @@ export default function Navigation() {
                 isOpen ? "block" : "hidden"
               }`}
             >
-              {navItems.map((item, idx) => (
+              {navItems?.length ? navItems.map((item, idx) => (
                 <div key={idx} className="flex items-center font-semibold text-black">
                   <a
                     href={item.link}
@@ -37,12 +37,12 @@ export default function Navigation() {
                     {item.text}
                   </a>
                 </div>
-              ))}
+              )): null}
             </div>
-            <TbAlignRight
+            {navItems?.length ? <TbAlignRight
             className="cursor-pointer absolute right-5 lg:hidden"
             onClick={toggleMenu}
-            />
+            /> : null}
           </div>
         </nav>
       </div>
