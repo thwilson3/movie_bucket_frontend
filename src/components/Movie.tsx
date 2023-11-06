@@ -57,6 +57,8 @@ export default function Movie({ movie, deleteMovie, addMovie }: MovieProps) {
         release_date: movie?.release_date,
         bio: movie?.bio,
       };
+
+      //TODO: verify movie added successfully before setIsAdded
       addMovie(newMovie);
       setIsAdded(true);
     } else {
