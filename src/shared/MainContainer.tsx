@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { HeaderOptions } from "../interfaces";
+import { HeaderOptions } from "../types";
 import ContainerHeader from "./ContainerHeader";
 
 const defaultHeaderOptions: HeaderOptions = {

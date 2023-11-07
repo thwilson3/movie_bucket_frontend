@@ -2,7 +2,7 @@ import {
   AddMovieFunction,
   DeleteMovieFunction,
   MovieType,
-} from "../interfaces";
+} from "../types";
 
 import Movie from "./Movie";
 

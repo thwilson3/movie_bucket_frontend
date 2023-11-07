@@ -1,4 +1,4 @@
-import { NewMovieType } from "./interfaces";
+import { NewMovieType } from "../types";
 
 const BASE_URL = "http://localhost:5001";
 

@@ -1,11 +1,11 @@
 import { useContext } from "react";
-import { UserContext } from "../UserContext";
-import { HeaderOptions, LogoutFunction, UserContextType } from "../interfaces";
+import { UserContext } from "../shared/UserContext";
+import { HeaderOptions, LogoutFunction, UserContextType } from "../types";
 
 import AnonOptions from "./AnonOptions";
 import LandingOptions from "./LandingOptions";
-import MainContainer from "./MainContainer";
-import WelcomeContainer from "./WelcomeContainer";
+import MainContainer from "../shared/MainContainer";
+import WelcomeContainer from "../containers/WelcomeContainer";
 
 /** Homepage view for Movie Bucket
  *

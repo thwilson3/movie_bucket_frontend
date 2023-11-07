@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { UserContext } from "./UserContext";
+import { UserContext } from "./shared/UserContext";
 
 import Navigation from "./components/Navigation";
-import MovieBucketAPI from "./api";
-import RoutesList from "./RoutesList";
+import MovieBucketAPI from "./api/api";
+import RoutesList from "./routes/RoutesList";
 
 export default function App() {
   const [currentUser, setCurrentUser] = useState(null);

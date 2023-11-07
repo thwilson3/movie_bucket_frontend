@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { UserContextType } from "./interfaces";
+import { UserContextType } from "../types";
 
 
 

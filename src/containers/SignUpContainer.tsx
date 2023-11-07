@@ -1,6 +1,6 @@
-import { SignupFunction } from "../interfaces";
-import MainContainer from "./MainContainer";
-import SignUpForm from "./SignUpForm";
+import { SignupFunction } from "../types";
+import MainContainer from "../shared/MainContainer";
+import SignUpForm from "../forms/SignUpForm";
 
 export default function SignUpContainer({
   signup,

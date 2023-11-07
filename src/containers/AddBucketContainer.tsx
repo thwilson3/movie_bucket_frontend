@@ -1,5 +1,5 @@
-import BucketForm from "./BucketForm";
-import MainContainer from "./MainContainer";
+import BucketForm from "../forms/BucketForm";
+import MainContainer from "../shared/MainContainer";
 
 export default function AddBucketContainer() {
   return (

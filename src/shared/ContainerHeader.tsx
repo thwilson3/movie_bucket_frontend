@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { HeaderOptions } from "../interfaces";
+import { HeaderOptions } from "../types";
 import { MdUndo } from "react-icons/md";
 
 export default function ContainerHeader({

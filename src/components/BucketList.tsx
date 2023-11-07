@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import Bucket from "./Bucket";
-import { BucketType } from "../interfaces";
+import { BucketType } from "../types";
 
 /** Renders a list of buckets
  *

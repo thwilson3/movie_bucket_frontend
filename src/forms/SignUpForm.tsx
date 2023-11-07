@@ -1,15 +1,15 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import MovieBucketAPI from "../api";
+import { SignupFunction } from "../types";
 
-export default function BucketForm() {
+export default function SignUpForm({ signup }: { signup: SignupFunction }) {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    bucketName: "",
-    description: "",
-    genre: "",
+    username: "",
+    password: "",
+    email: "",
   });
-  //   const [formErrors, setFormErrors] = useState([]);
+  // const [formErrors, setFormErrors] = useState([]);
 
   /** Handle form submit:
    *
@@ -18,12 +18,10 @@ export default function BucketForm() {
   async function handleSubmit(evt: React.FormEvent<HTMLFormElement>) {
     evt.preventDefault();
     try {
-      console.log("inside create function");
-      const { bucketName, description, genre } = formData;
-      await MovieBucketAPI.createBucket(bucketName, description, genre);
-      navigate("/buckets");
-    } catch (err: unknown) {
-      console.debug(err);
+      await signup(formData);
+      navigate("/");
+    } catch (err) {
+      console.error(err);
     }
   }
 
@@ -38,45 +36,47 @@ export default function BucketForm() {
       <form onSubmit={handleSubmit} className="flex flex-col gap-6">
         <div>
           <p className="flex flex-col text-sm opacity-60 mt-3 absolute top-16">
-            *Required
+            *all fields required
           </p>
 
           <div className="border-2 flex flex-row relative mt-8 border-black font-bold shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
             <label className="bg-black outline outline-black outline-2 text-white p-3">
-              bucket name
+              email
             </label>
             <input
-              name="bucketName"
-              className="px-1 bg-white"
-              value={formData.bucketName}
+              name="email"
+              className="px-1 bg-white w-full"
+              value={formData.email}
               onChange={handleChange}
-              autoComplete="current-bucketName"
+              autoComplete="current-email"
               required
             />
           </div>
         </div>
         <div className="border-2 flex flex-row border-black font-bold shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
           <label className="bg-black outline outline-black outline-2 text-white p-3">
-            description
+            username
           </label>
           <input
-            name="description"
+            name="username"
             className="px-1 bg-white w-full resize-y"
-            value={formData.description}
+            value={formData.username}
             onChange={handleChange}
-            autoComplete="description"
+            autoComplete="username"
+            required
           />
         </div>
         <div className="border-2 flex flex-row border-black font-bold shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
           <label className="bg-black outline outline-black outline-2 text-white p-3">
-            genre
+            password
           </label>
           <input
-            name="genre"
+            name="password"
             className="px-1 bg-white w-full"
-            value={formData.genre}
+            value={formData.password}
             onChange={handleChange}
-            autoComplete="current-genre"
+            autoComplete="current-password"
+            required
           />
         </div>
 
@@ -86,7 +86,7 @@ export default function BucketForm() {
 
         <div className="flex justify-end">
           <button className="bg-primary mt-4 font-bold w-20 p-2 outline outline-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-            Create
+            submit
           </button>
         </div>
       </form>

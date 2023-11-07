@@ -4,10 +4,10 @@ import {
   DeleteMovieFunction,
   MovieType,
   RouteParams,
-} from "../interfaces";
+} from "../types";
 import { useParams } from "react-router-dom";
 import { MdAdd, MdClose, MdOutlineCheck } from "react-icons/md";
-import MovieBucketAPI from "../api";
+import MovieBucketAPI from "../api/api";
 
 //TODO: move this to interfaces
 interface MovieProps {

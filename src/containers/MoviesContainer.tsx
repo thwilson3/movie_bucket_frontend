@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { BucketType, HeaderOptions, MovieType, NewMovieType } from "../interfaces";
+import { BucketType, HeaderOptions, MovieType, NewMovieType } from "../types";
 
-import MainContainer from "./MainContainer";
-import MovieBucketAPI from "../api";
-import LoadingSpinner from "./LoadingSpinner";
-import MovieList from "./MovieList";
-import SearchBar from "./SearchBar";
-import InviteModal from "./InviteModal";
+import MainContainer from "../shared/MainContainer";
+import MovieBucketAPI from "../api/api";
+import LoadingSpinner from "../components/LoadingSpinner";
+import MovieList from "../components/MovieList";
+import SearchBar from "../components/SearchBar";
+import InviteModal from "../components/InviteModal";
 
 const defaultBucket: BucketType = {
   id: 0,

@@ -1,6 +1,6 @@
-import { LoginFunction } from "../interfaces";
-import LoginForm from "./LoginForm";
-import MainContainer from "./MainContainer";
+import { LoginFunction } from "../types";
+import LoginForm from "../forms/LoginForm";
+import MainContainer from "../shared/MainContainer";
 
 export default function LoginContainer({ login }: {login: LoginFunction}){
     return(

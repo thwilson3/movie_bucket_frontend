@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { LoginFunction } from "../interfaces";
+import { LoginFunction } from "../types";
 
 export default function LoginForm({ login }: { login: LoginFunction }) {
   const navigate = useNavigate();

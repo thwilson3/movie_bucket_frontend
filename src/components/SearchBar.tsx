@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FetchSearchResultsFunction } from "../interfaces";
+import { FetchSearchResultsFunction } from "../types";
 
 export default function SearchBar({
   placeholder,

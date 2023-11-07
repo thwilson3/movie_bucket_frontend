@@ -1,19 +1,19 @@
 import { Route, Routes, Navigate } from "react-router-dom";
 import { useContext } from "react";
-import { UserContext } from "./UserContext";
+import { UserContext } from "../shared/UserContext";
 import {
   LoginFunction,
   LogoutFunction,
   SignupFunction,
   UserContextType,
-} from "./interfaces";
+} from "../types";
 
-import Homepage from "./components/Homepage";
-import BucketsContainer from "./components/BucketsContainer";
-import MoviesContainer from "./components/MoviesContainer";
-import AddBucketContainer from "./components/AddBucketContainer";
-import SignUpContainer from "./components/SignUpContainer";
-import LoginContainer from "./components/LoginContainer";
+import Homepage from "../components/Homepage";
+import BucketsContainer from "../containers/BucketsContainer";
+import MoviesContainer from "../containers/MoviesContainer";
+import AddBucketContainer from "../containers/AddBucketContainer";
+import SignUpContainer from "../containers/SignUpContainer";
+import LoginContainer from "../containers/LoginContainer";
 
 export default function RoutesList({
   signup,

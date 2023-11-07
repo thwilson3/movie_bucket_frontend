@@ -30,7 +30,6 @@ export type BucketLinkType = {
   expiration_date: string;
 }
 
-//TODO: change interfaces to types
 export type NewMovieType = {
   bucket_id: string;
   title: string;
@@ -60,7 +59,6 @@ export type HeaderOptions = {
   buttons: OptionButtonType[] | [];
 };
 
-//FIXME: discriminated union
 export type OptionButtonType =
   | {
       type: "Link";

@@ -1,11 +1,11 @@
 import { useContext, useEffect, useState } from "react";
-import { UserContext } from "../UserContext";
-import { HeaderOptions, UserContextType } from "../interfaces";
+import { UserContext } from "../shared/UserContext";
+import { HeaderOptions, UserContextType } from "../types";
 
-import BucketList from "./BucketList";
-import MainContainer from "./MainContainer";
-import MovieBucketAPI from "../api";
-import LoadingSpinner from "./LoadingSpinner";
+import BucketList from "../components/BucketList";
+import MainContainer from "../shared/MainContainer";
+import MovieBucketAPI from "../api/api";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 export default function BucketsContainer() {
   const [buckets, setBuckets] = useState([]);

@@ -1,4 +1,4 @@
-import { BucketType } from "../interfaces";
+import { BucketType } from "../types";
 
 type BucketProps = {
   bucket: BucketType;
