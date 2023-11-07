@@ -51,7 +51,7 @@ export type MovieFromSearchType = {
 };
 
 export type UserContextType = {
-  userContext?: UserType | null;
+  currentUser?: UserType | null;
 };
 
 export type HeaderOptions = {

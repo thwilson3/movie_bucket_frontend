@@ -15,6 +15,14 @@ const defaultBucket: BucketType = {
 
 }
 
+/** MovieContainer
+ *  Holds logic/state for child components
+ *
+ * State: movies<MovieType[], bucket<BucketType>, inviteCode, isModalOpen, isSearch
+ * Props: none
+ *
+ * MoviesContainer -> { InviteModal, SearchBar, MoviesList }
+ */
 export default function MoviesContainer() {
   const [movies, setMovies] = useState<MovieType[]>([]);
   const [bucket, setBucket] = useState<BucketType>(defaultBucket);

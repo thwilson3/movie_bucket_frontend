@@ -7,6 +7,13 @@ const defaultHeaderOptions: HeaderOptions = {
   buttons: [],
 };
 
+/** Main Container - Styled container shared across application
+ *
+ * State: none
+ * Props: children<ReactNode>, headerOptions
+ *
+ * MainContainer -> { ContainerHeader, children }
+ */
 export default function MainContainer({
   children,
   headerOptions = defaultHeaderOptions,

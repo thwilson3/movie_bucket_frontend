@@ -5,11 +5,18 @@ import Navigation from "./components/Navigation";
 import MovieBucketAPI from "./api/api";
 import RoutesList from "./routes/RoutesList";
 
+/** Homepage
+ *
+ * State: currentUser
+ * Props: none
+ *
+ * App -> Context<UserContext> -> { Navigation, RoutesList }
+ */
 export default function App() {
   const [currentUser, setCurrentUser] = useState(null);
 
   //TODO: rename context
-  const userContext = currentUser
+  // const userContext = currentUser;
 
   //TODO: these function could live inside a custom hook
   async function login({
@@ -19,8 +26,6 @@ export default function App() {
     username: string;
     password: string;
   }) {
-
-
     const { access_token, message, status, success, user } =
       await MovieBucketAPI.login(username, password);
     if (success) {
@@ -53,7 +58,7 @@ export default function App() {
   }
 
   return (
-    <UserContext.Provider value={{ userContext }}>
+    <UserContext.Provider value={{ currentUser }}>
       <>
         <Navigation />
         <RoutesList login={login} signup={signup} logout={logout} />

@@ -5,9 +5,9 @@ import { BucketType } from "../types";
 /** Renders a list of buckets
  *
  * State: none
- * Props: none
+ * Props: buckets<BucketType[]>
  *
- * Homepage -> BucketList -> Bucket
+ * BucketList -> Bucket
  */
 export default function BucketList({ buckets }: { buckets: BucketType[] }) {
   return (

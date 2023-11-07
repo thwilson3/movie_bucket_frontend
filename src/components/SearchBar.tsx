@@ -1,6 +1,13 @@
 import { useState } from "react";
 import { FetchSearchResultsFunction } from "../types";
 
+/** SearchBar
+ *
+ * State: searchTerm
+ * Props: placeholder, fetchSearchResults(fn)
+ *
+ * MoviesContainer -> SearchBar
+ */
 export default function SearchBar({
   placeholder,
   fetchSearchResults,

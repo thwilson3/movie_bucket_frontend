@@ -2,6 +2,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { HeaderOptions } from "../types";
 import { MdUndo } from "react-icons/md";
 
+/** ContainerHeader - Renders headerOptions passed down with corresponding functionality
+ *
+ * State: none
+ * Props: options<HeaderOptionsType>
+ *
+ * MainContainer -> ContainerHeader
+ */
 export default function ContainerHeader({
   options,
 }: {

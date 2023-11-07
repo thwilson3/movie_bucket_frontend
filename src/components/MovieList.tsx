@@ -6,6 +6,13 @@ import {
 
 import Movie from "./Movie";
 
+/** Renders a list of movies
+ *
+ * State: none
+ * Props: movies<MovieType[]>
+ *
+ * BucketList -> Bucket
+ */
 export default function MovieList({
   movies,
   deleteMovie,

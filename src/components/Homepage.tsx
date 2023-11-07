@@ -7,18 +7,19 @@ import LandingOptions from "./LandingOptions";
 import MainContainer from "../shared/MainContainer";
 import WelcomeContainer from "../containers/WelcomeContainer";
 
-/** Homepage view for Movie Bucket
+/** Homepage
  *
+ * Context: currentUser<UserType>
  * State: none
- * Props: none
+ * Props: logout fn
  *
- * App -> Homepage -> BucketList, Navigation
+ * App -> Homepage -> { WelcomeContainer && AnonOptions || LandingOptions }
  */
 export default function Homepage({ logout }: { logout: LogoutFunction }) {
-  const { userContext } = useContext(UserContext) as UserContextType;
+  const { currentUser } = useContext(UserContext) as UserContextType;
 
   const userOptions: HeaderOptions = {
-    title: userContext?.username,
+    title: currentUser?.username,
     buttons: [
       {
         type: "Link",
@@ -29,10 +30,9 @@ export default function Homepage({ logout }: { logout: LogoutFunction }) {
     ],
   };
 
-  console.log("userContext", userContext);
   return (
     <>
-      {userContext === null ? (
+      {currentUser === null ? (
         <>
           <WelcomeContainer />
           <MainContainer>
