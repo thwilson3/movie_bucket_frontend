@@ -15,11 +15,15 @@ export default function MovieList({
   deleteMovie: DeleteMovieFunction;
   addMovie: AddMovieFunction;
 }) {
+  console.log("movies in MovieList", movies);
+
   return (
     <div className="flex flex-col gap-6">
       {movies.length
         ? movies.map((movie) => (
+
             <Movie
+            // TODO: handle when movie.id is undefined
               key={movie.id}
               movie={movie}
               deleteMovie={deleteMovie}

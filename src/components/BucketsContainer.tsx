@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../UserContext";
-import { UserContextType } from "../interfaces";
+import { HeaderOptions, UserContextType } from "../interfaces";
 
 import BucketList from "./BucketList";
 import MainContainer from "./MainContainer";
@@ -11,9 +11,10 @@ export default function BucketsContainer() {
   const [buckets, setBuckets] = useState([]);
   const { userContext } = useContext(UserContext) as UserContextType;
 
-  const headerOptions = {
+  const headerOptions: HeaderOptions = {
     title: `${userContext?.username}'s Buckets`,
     buttons: [{
+      type: "Link",
       text: "new",
       path: "add",
     }]
@@ -26,7 +27,6 @@ export default function BucketsContainer() {
   async function getBuckets() {
     const newBuckets = await MovieBucketAPI.getBuckets();
     setBuckets(newBuckets);
-    console.log(newBuckets);
   }
 
   if (!buckets) return <LoadingSpinner />;

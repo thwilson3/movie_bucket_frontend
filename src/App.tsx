@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { UserContext } from "./UserContext";
 
 import Navigation from "./components/Navigation";
@@ -8,8 +8,10 @@ import RoutesList from "./RoutesList";
 export default function App() {
   const [currentUser, setCurrentUser] = useState(null);
 
-  const userContext = useMemo(() => (currentUser), [currentUser]);
+  //TODO: rename context
+  const userContext = currentUser
 
+  //TODO: these function could live inside a custom hook
   async function login({
     username,
     password,
@@ -17,12 +19,13 @@ export default function App() {
     username: string;
     password: string;
   }) {
-    console.log("login in app", username, password);
+
 
     const { access_token, message, status, success, user } =
       await MovieBucketAPI.login(username, password);
     if (success) {
       setCurrentUser(user);
+      //TODO: Set token inside api class
       MovieBucketAPI.token = access_token;
     } else throw new Error(JSON.stringify({ message, status }));
   }

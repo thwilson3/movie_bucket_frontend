@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { SignupFunction } from "../interfaces";
 
-export default function SignUpForm({ signup }: {signup: SignupFunction}) {
+export default function SignUpForm({ signup }: { signup: SignupFunction }) {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: "",

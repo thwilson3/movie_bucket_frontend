@@ -31,6 +31,7 @@ export default function RoutesList({
       <Route path="/" element={<Homepage logout={logout} />} />
       <Route path="/login" element={<LoginContainer login={login} />} />
       <Route path="/signup" element={<SignUpContainer signup={signup} />} />
+      {/* //TODO: could make private route component */}
       <Route
         path="/buckets"
         element={

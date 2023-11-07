@@ -5,7 +5,7 @@ import { MdUndo } from "react-icons/md";
 export default function ContainerHeader({
   options,
 }: {
-  options?: HeaderOptions;
+  options: HeaderOptions;
 }) {
   const navigate = useNavigate();
 
@@ -29,16 +29,24 @@ export default function ContainerHeader({
       {options?.buttons.length
         ? options?.buttons.map((button, index) => (
             <div
-              className="absolute top-2 w-20 text-center"
+              className="absolute top-2 text-center"
               style={calculateButtonSpacing(index)}
               key={index}
             >
-              {/* //TODO: Refactor the way header options are being passed/handled */}
-              <Link to={button.path} onClick={button.function}>
-                <div className="bg-primary font-bold outline outline-2 px-2 cursor-pointer rounded-full">
+              {button.type === "Link" ? (
+                <Link to={button.path} onClick={button.function}>
+                  <div className="bg-primary font-bold outline w-20 outline-2 px-2 cursor-pointer rounded-full">
+                    {button.text}
+                  </div>
+                </Link>
+              ) : button.type === "Toggle" ? (
+                <button
+                  className="bg-primary font-bold outline w-20 outline-2 px-2 cursor-pointer rounded-full"
+                  onClick={button.function}
+                >
                   {button.text}
-                </div>
-              </Link>
+                </button>
+              ) : null}
             </div>
           ))
         : null}

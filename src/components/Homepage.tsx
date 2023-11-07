@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { UserContext } from "../UserContext";
-import { LogoutFunction, UserContextType } from "../interfaces";
+import { HeaderOptions, LogoutFunction, UserContextType } from "../interfaces";
 
 import AnonOptions from "./AnonOptions";
 import LandingOptions from "./LandingOptions";
@@ -17,10 +17,11 @@ import WelcomeContainer from "./WelcomeContainer";
 export default function Homepage({ logout }: { logout: LogoutFunction }) {
   const { userContext } = useContext(UserContext) as UserContextType;
 
-  const userOptions = {
+  const userOptions: HeaderOptions = {
     title: userContext?.username,
     buttons: [
       {
+        type: "Link",
         text: "logout",
         function: logout,
         path: "/",

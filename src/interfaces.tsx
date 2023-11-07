@@ -1,4 +1,4 @@
-export interface MovieType {
+export type MovieType = {
   id: string;
   title: string;
   image?: string;
@@ -9,27 +9,28 @@ export interface MovieType {
   is_watched?: boolean;
 }
 
-export interface BucketType {
+export type BucketType = {
   id: number;
   bucket_name: string;
   genre?: string;
   description?: string;
 }
 
-export interface UserType {
+export type UserType = {
   id: number;
   username: string;
   email: string;
   password: string;
 }
 
-export interface BucketLinkType {
+export type BucketLinkType = {
   id: number;
   bucket_id: number;
   invite_code: string;
   expiration_date: string;
 }
 
+//TODO: change interfaces to types
 export type NewMovieType = {
   bucket_id: string;
   title: string;
@@ -56,14 +57,22 @@ export type UserContextType = {
 
 export type HeaderOptions = {
   title?: string;
-  buttons: OptionButtonType[];
+  buttons: OptionButtonType[] | [];
 };
 
-export type OptionButtonType = {
-  text: string;
-  function?: () => void;
-  path?: string;
-};
+//FIXME: discriminated union
+export type OptionButtonType =
+  | {
+      type: "Link";
+      text: string;
+      function?: () => void;
+      path: string;
+    }
+  | {
+      type: "Toggle";
+      text: string;
+      function: () => void;
+    };
 
 export type RouteParams = {
   id: string;
@@ -77,9 +86,9 @@ export type LoginFunction = (props: {
 export type LogoutFunction = () => void;
 
 export type SignupFunction = (props: {
-  username: string,
-  password: string,
-  email: string
+  username: string;
+  password: string;
+  email: string;
 }) => void;
 
 export type DeleteMovieFunction = (

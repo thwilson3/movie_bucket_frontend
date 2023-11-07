@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { BucketType, MovieType, NewMovieType } from "../interfaces";
+import { BucketType, HeaderOptions, MovieType, NewMovieType } from "../interfaces";
 
 import MainContainer from "./MainContainer";
 import MovieBucketAPI from "../api";
@@ -9,13 +9,19 @@ import MovieList from "./MovieList";
 import SearchBar from "./SearchBar";
 import InviteModal from "./InviteModal";
 
+const defaultBucket: BucketType = {
+  id: 0,
+  bucket_name: '',
+
+}
+
 export default function MoviesContainer() {
   const [movies, setMovies] = useState<MovieType[]>([]);
-  const [bucket, setBucket] = useState<BucketType[]>([]);
-  const [inviteCode, setInviteCode] = useState<string>("");
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const [isSearch, setIsSearch] = useState<boolean>(false);
-  const { id = "" } = useParams<string>();
+  const [bucket, setBucket] = useState<BucketType>(defaultBucket);
+  const [inviteCode, setInviteCode] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isSearch, setIsSearch] = useState(false);
+  const { id = "" } = useParams();
 
   //TODO: Reconsider how this useEffect is being used
   useEffect(function fetchContentOnMount() {
@@ -33,7 +39,7 @@ export default function MoviesContainer() {
       setBucket(bucket);
       setInviteCode(bucket_link.invite_code);
     } catch (err) {
-      console.error(err);
+      throw new Error(JSON.stringify(err));
     }
   }
 
@@ -55,10 +61,8 @@ export default function MoviesContainer() {
   }
 
   async function fetchSearchResults(searchTerm: string): Promise<void> {
-
     try {
       const movies = await MovieBucketAPI.getSearchResults(searchTerm);
-      console.log("movies in search bar", movies);
       setMovies(movies);
     } catch (err) {
       throw new Error(JSON.stringify(err));
@@ -66,7 +70,6 @@ export default function MoviesContainer() {
   }
 
   async function deleteMovie(id: string, movieId: string): Promise<void> {
-
     try {
       await MovieBucketAPI.deleteMovie(id, movieId.toString());
       getMovies();
@@ -76,7 +79,6 @@ export default function MoviesContainer() {
   }
 
   async function addMovie(newMovie: NewMovieType): Promise<void> {
-
     try {
       await MovieBucketAPI.addMovie(newMovie);
     } catch (err) {
@@ -84,19 +86,16 @@ export default function MoviesContainer() {
     }
   }
 
-  const headerOptions = {
+  const headerOptions: HeaderOptions = {
     title: bucket.bucket_name || "welcome",
     buttons: [
       {
-        text: "edit",
-        path: "edit",
-      },
-      {
+        type: "Toggle",
         text: "invite",
         function: toggleModal,
-        path: "",
       },
       {
+        type: "Toggle",
         text: "add",
         function: toggleSearch,
       },
@@ -107,15 +106,15 @@ export default function MoviesContainer() {
 
   return (
     <MainContainer headerOptions={headerOptions}>
-      {isModalOpen ? (
+      {isModalOpen && (
         <InviteModal toggleModal={toggleModal} inviteCode={inviteCode} />
-      ) : null}
-      {isSearch ? (
+      )}
+      {isSearch && (
         <SearchBar
           placeholder="Find a movie"
           fetchSearchResults={fetchSearchResults}
         />
-      ) : null}
+      )}
       <MovieList
         movies={movies}
         deleteMovie={deleteMovie}

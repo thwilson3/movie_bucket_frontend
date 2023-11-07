@@ -14,8 +14,8 @@ export default function BucketList({ buckets }: { buckets: BucketType[] }) {
     <div className="flex flex-col gap-6">
       {buckets.length
         ? buckets.map((bucket) => (
-            <Link to={`${bucket.id}`}>
-              <Bucket key={bucket.id} bucket={bucket} />
+            <Link to={`${bucket.id}`} key={bucket.id}>
+              <Bucket bucket={bucket} />
             </Link>
           ))
         : "Create a bucket to start adding movies!"}
