@@ -50,6 +50,16 @@ export type MovieFromSearchType = {
   bio?: string;
 };
 
+export type MovieProps = {
+  movie: MovieType;
+  deleteMovie: DeleteMovieFunction;
+  addMovie: AddMovieFunction;
+}
+
+export type BucketProps = {
+  bucket: BucketType;
+};
+
 export type UserContextType = {
   currentUser?: UserType | null;
 };
