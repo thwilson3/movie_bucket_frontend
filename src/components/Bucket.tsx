@@ -1,8 +1,4 @@
-import { BucketType } from "../types";
-
-type BucketProps = {
-  bucket: BucketType;
-};
+import { BucketProps } from "../types";
 
 /** Renders a single bucket
  *

@@ -1,20 +1,8 @@
 import { useState } from "react";
-import {
-  AddMovieFunction,
-  DeleteMovieFunction,
-  MovieType,
-  RouteParams,
-} from "../types";
+import { MovieProps, RouteParams } from "../types";
 import { useParams } from "react-router-dom";
 import { MdAdd, MdClose, MdOutlineCheck } from "react-icons/md";
 import MovieBucketAPI from "../api/api";
-
-//TODO: move this to interfaces
-interface MovieProps {
-  movie: MovieType;
-  deleteMovie: DeleteMovieFunction;
-  addMovie: AddMovieFunction;
-}
 
 const NO_IMAGE_FOUND = "../public/No image.png";
 
