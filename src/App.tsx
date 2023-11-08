@@ -15,9 +15,6 @@ import RoutesList from "./routes/RoutesList";
 export default function App() {
   const [currentUser, setCurrentUser] = useState(null);
 
-  //TODO: rename context
-  // const userContext = currentUser;
-
   //TODO: these function could live inside a custom hook
   async function login({
     username,
