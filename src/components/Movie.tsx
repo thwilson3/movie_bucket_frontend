@@ -14,7 +14,7 @@ const NO_IMAGE_FOUND = "../public/No image.png";
  *
  *  MovieList -> Movie
  */
-export default function Movie({ movie, deleteMovie, addMovie }: MovieProps) {
+export default function Movie({ movie, movieIds, deleteMovie, addMovie }: MovieProps) {
   const [isWatched, setIsWatched] = useState(movie.is_watched);
   const [isBioOpen, setIsBioOpen] = useState(false);
   const [isAdded, setIsAdded] = useState(false);
@@ -72,7 +72,7 @@ export default function Movie({ movie, deleteMovie, addMovie }: MovieProps) {
           width="200"
         />
       </div>
-      {movie?.id ? (
+      {movieIds.includes(movie?.id) ? (
         <MdClose
           className="absolute top-2 right-2 cursor-pointer w-6 h-6 outline outline-2 outline-black text-black bg-red-500"
           onClick={handleDelete}

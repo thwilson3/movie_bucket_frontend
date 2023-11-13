@@ -26,6 +26,7 @@ const defaultBucket: BucketType = {
 export default function MoviesContainer() {
   const [movies, setMovies] = useState<MovieType[]>([]);
   const [bucket, setBucket] = useState<BucketType>(defaultBucket);
+  const [movieIds, setMoviesIds] = useState([])
   const [inviteCode, setInviteCode] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSearch, setIsSearch] = useState(false);
@@ -44,6 +45,7 @@ export default function MoviesContainer() {
         MovieBucketAPI.getInviteCode(id),
       ]);
       setMovies(movies);
+      setMoviesIds(movies.map((movie: MovieType) => movie.id))
       setBucket(bucket);
       setInviteCode(bucket_link.invite_code);
     } catch (err) {
@@ -125,6 +127,7 @@ export default function MoviesContainer() {
       )}
       <MovieList
         movies={movies}
+        movieIds={movieIds}
         deleteMovie={deleteMovie}
         addMovie={addMovie}
       />

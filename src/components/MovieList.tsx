@@ -1,8 +1,4 @@
-import {
-  AddMovieFunction,
-  DeleteMovieFunction,
-  MovieType,
-} from "../types";
+import { AddMovieFunction, DeleteMovieFunction, MovieType } from "../types";
 
 import Movie from "./Movie";
 
@@ -15,10 +11,12 @@ import Movie from "./Movie";
  */
 export default function MovieList({
   movies,
+  movieIds,
   deleteMovie,
   addMovie,
 }: {
   movies: MovieType[];
+  movieIds: string[]
   deleteMovie: DeleteMovieFunction;
   addMovie: AddMovieFunction;
 }) {
@@ -28,11 +26,11 @@ export default function MovieList({
     <div className="flex flex-col gap-6">
       {movies.length
         ? movies.map((movie) => (
-
             <Movie
-            // TODO: handle when movie.id is undefined
+              // TODO: handle when movie.id is undefined
               key={movie.id}
               movie={movie}
+              movieIds={movieIds}
               deleteMovie={deleteMovie}
               addMovie={addMovie}
             />
