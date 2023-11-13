@@ -92,7 +92,7 @@ export default function Movie({ movie, movieIds, deleteMovie, addMovie }: MovieP
         >
           <p>{isBioOpen ? "Close" : "Synopsis"}</p>
         </div>
-        {movie?.id ? (
+        {movieIds.includes(movie?.id) ? (
           <div
             className="w-min border-2 border-black cursor-pointer px-2 py-1.5 text-black text-xs font-bold rounded-full shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
             style={{ backgroundColor: isWatched ? "#56b02d" : "#ff9d42" }}
