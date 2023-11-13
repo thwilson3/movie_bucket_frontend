@@ -41,6 +41,7 @@ export default function Movie({ movie, deleteMovie, addMovie }: MovieProps) {
     if (movie) {
       const newMovie = {
         bucket_id: id,
+        id: movie.id,
         title: movie.title,
         image: movie?.image ? movie.image : NO_IMAGE_FOUND,
         release_date: movie?.release_date,
