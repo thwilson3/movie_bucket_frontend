@@ -52,6 +52,7 @@ export type MovieFromSearchType = {
 
 export type MovieProps = {
   movie: MovieType;
+  movieIds: string[];
   deleteMovie: DeleteMovieFunction;
   addMovie: AddMovieFunction;
 }
