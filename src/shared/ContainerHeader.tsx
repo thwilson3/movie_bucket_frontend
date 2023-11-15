@@ -11,10 +11,12 @@ import { MdArrowForwardIos, MdUndo } from "react-icons/md";
  */
 export default function ContainerHeader({
   options,
-  handleClick
+  handleClick,
+  isMenuOpen,
 }: {
   options: HeaderOptions;
-  handleClick: () => void
+  handleClick: () => void;
+  isMenuOpen: boolean;
 }) {
   const navigate = useNavigate();
 
@@ -32,14 +34,19 @@ export default function ContainerHeader({
         onClick={goBack}
       />
       {options?.buttons.length ? (
-        <div className="absolute top-2 right-2 bg-primary cursor-pointer rounded-full outline outline-2 w-20 px-2 font-bold text-center"
-        onClick={handleClick}>
-          <div className="flex items-center justify-center">menu <MdArrowForwardIos className="ml-1 h-4"/></div>
+        <div
+          className="absolute top-2 right-2 bg-primary cursor-pointer rounded-full outline outline-2 w-20 px-2 font-bold text-center"
+          onClick={handleClick}
+        >
+          <div className="flex items-center justify-center">
+            menu{" "}
+            <MdArrowForwardIos
+              className="ml-1 h-4 transition-transform ease-in-out"
+              style={{ transform: `rotate(${isMenuOpen ? "180deg" : "0"})` }}
+            />
+          </div>
         </div>
       ) : null}
-      <div className="absolute left-full top-0 ml-6 outline outline-2 outline-black bg-primary drop-shadow-lg rounded-r-md h-10 w-36 z-40 shadow-[3px_3px_0px_3px_rgba(0,0,0,1)]">
-            test
-      </div>
     </>
   );
 }
