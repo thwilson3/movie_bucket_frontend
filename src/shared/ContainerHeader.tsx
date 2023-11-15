@@ -1,6 +1,6 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { HeaderOptions } from "../types";
-import { MdUndo } from "react-icons/md";
+import { MdArrowForwardIos, MdUndo } from "react-icons/md";
 
 /** ContainerHeader - Renders headerOptions passed down with corresponding functionality
  *
@@ -11,14 +11,12 @@ import { MdUndo } from "react-icons/md";
  */
 export default function ContainerHeader({
   options,
+  handleClick
 }: {
   options: HeaderOptions;
+  handleClick: () => void
 }) {
   const navigate = useNavigate();
-
-  function calculateButtonSpacing(index: number) {
-    return index === 0 ? { right: "1rem" } : { right: `${index * 6 + 1}rem` };
-  }
 
   function goBack() {
     navigate(-1);
@@ -33,30 +31,15 @@ export default function ContainerHeader({
         className="absolute left-2 top-2 h-6 w-10 cursor-pointer rounded-full bg-primary outline outline-2"
         onClick={goBack}
       />
-      {options?.buttons.length
-        ? options?.buttons.map((button, index) => (
-            <div
-              className="absolute top-2 text-center"
-              style={calculateButtonSpacing(index)}
-              key={index}
-            >
-              {button.type === "Link" ? (
-                <Link to={button.path} onClick={button.function}>
-                  <div className="bg-primary font-bold outline w-20 outline-2 px-2 cursor-pointer rounded-full">
-                    {button.text}
-                  </div>
-                </Link>
-              ) : button.type === "Toggle" ? (
-                <button
-                  className="bg-primary font-bold outline w-20 outline-2 px-2 cursor-pointer rounded-full"
-                  onClick={button.function}
-                >
-                  {button.text}
-                </button>
-              ) : null}
-            </div>
-          ))
-        : null}
+      {options?.buttons.length ? (
+        <div className="absolute top-2 right-2 bg-primary cursor-pointer rounded-full outline outline-2 w-20 px-2 font-bold text-center"
+        onClick={handleClick}>
+          <div className="flex items-center justify-center">menu <MdArrowForwardIos className="ml-1 h-4"/></div>
+        </div>
+      ) : null}
+      <div className="absolute left-full top-0 ml-6 outline outline-2 outline-black bg-primary drop-shadow-lg rounded-r-md h-10 w-36 z-40 shadow-[3px_3px_0px_3px_rgba(0,0,0,1)]">
+            test
+      </div>
     </>
   );
 }
