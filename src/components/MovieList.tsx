@@ -23,7 +23,7 @@ export default function MovieList({
   console.log("movies in MovieList", movies);
 
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-6 items-center">
       {movies.length
         ? movies.map((movie) => (
             <Movie
