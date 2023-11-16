@@ -56,7 +56,7 @@ export default function SearchMovie({ movie, movieIds, addMovie }: MovieProps) {
       <div className="flex flex-col items-center gap-3">
         {!movieIds.includes(movie?.id) ? (
           isAdded ? (
-            <div className="w-min border-2 border-black text-black bg-green-500 cursor-default px-6 py-1.5 text-xs rounded-full font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+            <div className="w-min border-2 border-black text-black bg-green-500 cursor-default px-2 py-1.5 text-xs rounded-full font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
               <p>success!</p>
             </div>
           ) : (
