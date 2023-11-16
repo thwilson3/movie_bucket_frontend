@@ -43,7 +43,8 @@ export default function MainContainer({
               {children}
             </div>
           </div>
-          { isMenuOpen && <SidebarMenu buttons={buttons} /> }
+          <SidebarMenu buttons={buttons} isMenuOpen={isMenuOpen} />
+          {/* { isMenuOpen && <SidebarMenu buttons={buttons} /> } */}
         </div>
       </div>
     </>

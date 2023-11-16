@@ -1,21 +1,22 @@
 import { Link } from "react-router-dom";
 import { OptionButtonType } from "../types";
-import { useEffect, useState } from "react";
 
 export default function SidebarMenu({
   buttons,
+  isMenuOpen,
 }: {
   buttons: OptionButtonType[];
+  isMenuOpen: boolean;
 }) {
-  const [marginLeft, setMarginLeft] = useState(-6);
 
-  useEffect(() => {
-    setMarginLeft(1.5);
-  }, []);
+
   return (
     <div
       className="absolute top-11 left-full transition-all ease-in-out duration-300 -z-10 outline outline-2 outline-black bg-primary drop-shadow-2xl rounded-r-md rounded-l-md w-36 shadow-[3px_3px_0px_3px_rgba(0,0,0,1)]"
-      style={{ marginLeft: `${marginLeft}rem` }}
+      style={{
+        marginLeft: `${isMenuOpen ? "1.5" : "-10"}rem`,
+        visibility: `${isMenuOpen ? "visible" : "hidden"}`,
+      }}
     >
       {buttons.map((button) =>
         button.type === "Link" ? (
