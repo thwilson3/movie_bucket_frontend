@@ -23,7 +23,7 @@ export default function MainContainer({
   headerOptions?: HeaderOptions;
 }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { buttons } = headerOptions
+  const { buttons } = headerOptions;
 
   function handleClick() {
     setIsMenuOpen(!isMenuOpen);
@@ -44,7 +44,6 @@ export default function MainContainer({
             </div>
           </div>
           <SidebarMenu buttons={buttons} isMenuOpen={isMenuOpen} />
-          {/* { isMenuOpen && <SidebarMenu buttons={buttons} /> } */}
         </div>
       </div>
     </>
