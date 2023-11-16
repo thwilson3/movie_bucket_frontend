@@ -8,12 +8,12 @@ import LoadingSpinner from "../components/LoadingSpinner";
 import MovieList from "../components/MovieList";
 import SearchBar from "../components/SearchBar";
 import InviteModal from "../components/InviteModal";
+import SearchContainer from "./SearchContainer";
 
 const defaultBucket: BucketType = {
   id: 0,
-  bucket_name: '',
-
-}
+  bucket_name: "",
+};
 
 /** MovieContainer
  *  Holds logic/state for child components
@@ -26,7 +26,8 @@ const defaultBucket: BucketType = {
 export default function MoviesContainer() {
   const [movies, setMovies] = useState<MovieType[]>([]);
   const [bucket, setBucket] = useState<BucketType>(defaultBucket);
-  const [movieIds, setMoviesIds] = useState([])
+  const [searchResults, setSearchResults] = useState<MovieType[]>([]);
+  const [movieIds, setMoviesIds] = useState([]);
   const [inviteCode, setInviteCode] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSearch, setIsSearch] = useState(false);
@@ -45,7 +46,7 @@ export default function MoviesContainer() {
         MovieBucketAPI.getInviteCode(id),
       ]);
       setMovies(movies);
-      setMoviesIds(movies.map((movie: MovieType) => movie.id))
+      setMoviesIds(movies.map((movie: MovieType) => movie.id));
       setBucket(bucket);
       setInviteCode(bucket_link.invite_code);
     } catch (err) {
@@ -73,7 +74,7 @@ export default function MoviesContainer() {
   async function fetchSearchResults(searchTerm: string): Promise<void> {
     try {
       const movies = await MovieBucketAPI.getSearchResults(searchTerm);
-      setMovies(movies);
+      setSearchResults(movies);
     } catch (err) {
       throw new Error(JSON.stringify(err));
     }
@@ -125,6 +126,12 @@ export default function MoviesContainer() {
           fetchSearchResults={fetchSearchResults}
         />
       )}
+      <SearchContainer
+        searchResults={searchResults}
+        movieIds={movieIds}
+        deleteMovie={deleteMovie}
+        addMovie={addMovie}
+      />
       <MovieList
         movies={movies}
         movieIds={movieIds}
