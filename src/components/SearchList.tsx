@@ -23,7 +23,7 @@ export default function SearchList({
 }) {
 
   return (
-    <div className="flex flex-row p-6">
+    <div className="flex flex-row p-6 mt-4">
       {movies.length
         ? movies.map((movie) => (
             <SearchMovie
