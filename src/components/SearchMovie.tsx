@@ -69,17 +69,24 @@ export default function SearchMovie({ movie, movieIds, addMovie }: MovieProps) {
           )
         ) : null}
         <div
-          className="w-min border-2 border-black text-black bg-primary cursor-pointer px-2 py-1.5 text-xs rounded-full font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
+          className="w-min border-2 border-black text-black bg-primary cursor-pointer px-5 py-1.5 text-xs rounded-full font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
           onClick={toggleBio}
         >
-          <p>{isBioOpen ? "close" : "synopsis"}</p>
+          <p>{isBioOpen ? "close" : "info"}</p>
         </div>
       </div>
       {isBioOpen ? (
-        <div className="bg-primary mt-3 rounded-md text-xs outline outline-3 text-black w-full flex items-center">
-          <p className="p-3">
-            {movie.bio ? movie.bio : "Bio unavailable at this time."}
-          </p>
+        <div className="bg-primary cursor-pointer absolute bottom-10 rounded-md text-xs outline outline-3 text-black overflow-y-scroll max-h-80 z-10 flex items-center"
+        onClick={toggleBio}>
+          <div className="p-3">
+            <p className="font-extrabold">
+            Title: <span className="font-semibold">{movie.title}</span>
+            <br></br>
+            Released: <span className="font-semibold">{movie.release_date?.slice(0, 4)}</span>
+
+            </p>
+            {/* {movie.bio ? movie.bio : "Bio unavailable at this time."} */}
+          </div>
         </div>
       ) : null}
     </div>
