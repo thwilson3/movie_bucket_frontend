@@ -12,7 +12,11 @@ const NO_IMAGE_FOUND = "../public/No image.png";
  *
  *  MovieList -> Movie
  */
-export default function SearchMovie({ movie, movieIds, addMovie }: SearchProps) {
+export default function SearchMovie({
+  movie,
+  movieIds,
+  addMovie,
+}: SearchProps) {
   const [isBioOpen, setIsBioOpen] = useState(false);
   const [isAdded, setIsAdded] = useState(false);
   const { id = "" } = useParams<RouteParams>();
@@ -76,14 +80,18 @@ export default function SearchMovie({ movie, movieIds, addMovie }: SearchProps) 
         </div>
       </div>
       {isBioOpen ? (
-        <div className="bg-primary cursor-pointer absolute bottom-10 rounded-md text-xs outline outline-3 text-black overflow-y-scroll max-h-80 z-10 flex items-center"
-        onClick={toggleBio}>
+        <div
+          className="bg-primary cursor-pointer absolute bottom-10 rounded-md text-xs outline outline-3 text-black overflow-y-scroll max-h-80 z-10 flex items-center"
+          onClick={toggleBio}
+        >
           <div className="p-3">
             <p className="font-extrabold">
-            Title: <span className="font-semibold">{movie.title}</span>
-            <br></br>
-            Released: <span className="font-semibold">{movie.release_date?.slice(0, 4)}</span>
-
+              Title: <span className="font-semibold">{movie.title}</span>
+              <br></br>
+              Released:{" "}
+              <span className="font-semibold">
+                {movie.release_date?.slice(0, 4)}
+              </span>
             </p>
             {/* {movie.bio ? movie.bio : "Bio unavailable at this time."} */}
           </div>
