@@ -57,6 +57,12 @@ export type MovieProps = {
   addMovie: AddMovieFunction;
 }
 
+export type SearchProps = {
+  movie: MovieType;
+  movieIds: string[];
+  addMovie: AddMovieFunction;
+}
+
 export type BucketProps = {
   bucket: BucketType;
 };

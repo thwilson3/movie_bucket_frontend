@@ -1,6 +1,4 @@
 import { AddMovieFunction, DeleteMovieFunction, MovieType } from "../types";
-
-import Movie from "./Movie";
 import SearchMovie from "./SearchMovie";
 
 /** Renders a list of movies
@@ -13,7 +11,6 @@ import SearchMovie from "./SearchMovie";
 export default function SearchList({
   movies,
   movieIds,
-  deleteMovie,
   addMovie,
 }: {
   movies: MovieType[];

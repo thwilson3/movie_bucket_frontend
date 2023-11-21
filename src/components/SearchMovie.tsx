@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { MovieProps, RouteParams } from "../types";
+import { RouteParams, SearchProps } from "../types";
 import { useParams } from "react-router-dom";
 
 const NO_IMAGE_FOUND = "../public/No image.png";
@@ -12,7 +12,7 @@ const NO_IMAGE_FOUND = "../public/No image.png";
  *
  *  MovieList -> Movie
  */
-export default function SearchMovie({ movie, movieIds, addMovie }: MovieProps) {
+export default function SearchMovie({ movie, movieIds, addMovie }: SearchProps) {
   const [isBioOpen, setIsBioOpen] = useState(false);
   const [isAdded, setIsAdded] = useState(false);
   const { id = "" } = useParams<RouteParams>();
