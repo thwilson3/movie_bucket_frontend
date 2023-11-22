@@ -14,11 +14,10 @@ export default function SearchList({
   addMovie,
 }: {
   movies: MovieType[];
-  movieIds: string[]
+  movieIds: string[];
   deleteMovie: DeleteMovieFunction;
   addMovie: AddMovieFunction;
 }) {
-
   return (
     <div className="flex flex-row p-6 mt-4">
       {movies.length
