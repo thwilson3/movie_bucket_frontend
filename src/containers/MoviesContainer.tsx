@@ -121,17 +121,19 @@ export default function MoviesContainer() {
         <InviteModal toggleModal={toggleModal} inviteCode={inviteCode} />
       )}
       {isSearch && (
-        <SearchBar
-          placeholder="Find a movie"
-          fetchSearchResults={fetchSearchResults}
-        />
+        <>
+          <SearchBar
+            placeholder="Find a movie"
+            fetchSearchResults={fetchSearchResults}
+          />
+          <SearchContainer
+            searchResults={searchResults}
+            movieIds={movieIds}
+            deleteMovie={deleteMovie}
+            addMovie={addMovie}
+          />
+        </>
       )}
-      <SearchContainer
-        searchResults={searchResults}
-        movieIds={movieIds}
-        deleteMovie={deleteMovie}
-        addMovie={addMovie}
-      />
       <MovieList
         movies={movies}
         movieIds={movieIds}
