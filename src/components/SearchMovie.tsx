@@ -93,7 +93,6 @@ export default function SearchMovie({
                 {movie.release_date?.slice(0, 4)}
               </span>
             </p>
-            {/* {movie.bio ? movie.bio : "Bio unavailable at this time."} */}
           </div>
         </div>
       ) : null}
