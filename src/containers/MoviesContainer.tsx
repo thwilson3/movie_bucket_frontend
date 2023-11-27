@@ -40,15 +40,13 @@ export default function MoviesContainer() {
 
   async function getAllContent(): Promise<void> {
     try {
-      const [movies, { bucket }, { bucket_link }] = await Promise.all([
+      const [movies, { bucket }] = await Promise.all([
         MovieBucketAPI.getMovies(id),
         MovieBucketAPI.getSingleBucket(id),
-        MovieBucketAPI.getInviteCode(id),
       ]);
       setMovies(movies);
       setMoviesIds(movies.map((movie: MovieType) => movie.id));
       setBucket(bucket);
-      setInviteCode(bucket_link.invite_code);
     } catch (err) {
       throw new Error(JSON.stringify(err));
     }
@@ -69,6 +67,24 @@ export default function MoviesContainer() {
 
   function toggleSearch() {
     setIsSearch(!isSearch);
+  }
+
+  async function getInviteCode() {
+    try {
+      const { bucket_link } = await MovieBucketAPI.getInviteCode(id);
+      setInviteCode(bucket_link.invite_code);
+    } catch (err) {
+      throw new Error(JSON.stringify(err));
+    }
+  }
+
+  function handleModalAction() {
+    if (isModalOpen === false) {
+      getInviteCode();
+      toggleModal();
+    } else {
+      toggleModal();
+    }
   }
 
   async function fetchSearchResults(searchTerm: string): Promise<void> {
@@ -103,7 +119,7 @@ export default function MoviesContainer() {
       {
         type: "Toggle",
         text: "invite",
-        function: toggleModal,
+        function: handleModalAction,
       },
       {
         type: "Toggle",
