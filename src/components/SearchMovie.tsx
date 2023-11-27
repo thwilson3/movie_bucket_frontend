@@ -71,10 +71,11 @@ export default function SearchMovie({
               <p>add</p>
             </div>
           )
-        ) :
-        <div className="w-min border-2 border-black text-black bg-gray-400 cursor-default px-4 py-1.5 text-xs rounded-full font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
-              <p>added</p>
-            </div>}
+        ) : (
+          <div className="w-min border-2 border-black text-black bg-gray-400 cursor-default px-4 py-1.5 text-xs rounded-full font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+            <p>added</p>
+          </div>
+        )}
         <div
           className="w-min border-2 border-black text-black bg-primary cursor-pointer px-5 py-1.5 text-xs rounded-full font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
           onClick={toggleBio}
