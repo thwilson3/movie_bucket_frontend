@@ -24,7 +24,7 @@ export default function RoutesList({
   login: LoginFunction;
   logout: LogoutFunction;
 }) {
-  const { userContext } = useContext(UserContext) as UserContextType;
+  const { currentUser } = useContext(UserContext) as UserContextType;
 
   return (
     <Routes>
@@ -35,19 +35,19 @@ export default function RoutesList({
       <Route
         path="/buckets"
         element={
-          userContext !== null ? <BucketsContainer /> : <Navigate to={"/"} />
+          currentUser !== null ? <BucketsContainer /> : <Navigate to={"/"} />
         }
       />
       <Route
         path="/buckets/add"
         element={
-          userContext !== null ? <AddBucketContainer /> : <Navigate to={"/"} />
+          currentUser !== null ? <AddBucketContainer /> : <Navigate to={"/"} />
         }
       />
       <Route
         path="/buckets/:id"
         element={
-          userContext !== null ? <MoviesContainer /> : <Navigate to={"/"} />
+          currentUser !== null ? <MoviesContainer /> : <Navigate to={"/"} />
         }
       />
       <Route path="*" element={<Navigate to="/" />} />
