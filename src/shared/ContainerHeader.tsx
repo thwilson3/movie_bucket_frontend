@@ -1,6 +1,7 @@
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { HeaderOptions } from "../types";
 import { MdArrowForwardIos, MdUndo } from "react-icons/md";
+import { useEffect, useState } from "react";
 
 /** ContainerHeader - Renders headerOptions passed down with corresponding functionality
  *
@@ -19,6 +20,12 @@ export default function ContainerHeader({
   isMenuOpen: boolean;
 }) {
   const navigate = useNavigate();
+  const location = useLocation()
+  const [showBackButton, setShowBackButton] = useState(false);
+
+  useEffect(() => {
+    setShowBackButton(location.pathname !== '/');
+  }, [location, showBackButton]);
 
   function goBack() {
     navigate(-1);
@@ -29,10 +36,12 @@ export default function ContainerHeader({
       <div className="flex py-2 md:py-2 lg:py-2 font-bold bg-accent h-10 rounded-t-md justify-center outline outline-2 top-0 left-0 absolute w-full">
         {options?.title ? options.title : "welcome"}
       </div>
-      <MdUndo
-        className="absolute left-2 top-2 h-6 w-10 cursor-pointer rounded-full bg-primary outline outline-2"
-        onClick={goBack}
-      />
+      {showBackButton && (
+        <MdUndo
+          className="absolute left-2 top-2 h-6 w-10 cursor-pointer rounded-full bg-primary outline outline-2"
+          onClick={goBack}
+        />
+      )}
       {options?.buttons.length ? (
         <div
           className="absolute top-2 right-2 bg-primary cursor-pointer rounded-full outline outline-2 w-20 px-2 font-bold text-center"
