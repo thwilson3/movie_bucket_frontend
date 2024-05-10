@@ -15,7 +15,14 @@ export default {
       dropShadow: {
         primaryGlow: "0 0 3px #ff9d42",
         whiteGlow: "0 0 3px #b5c0b7",
-      }
+      },
+      boxShadow: {
+        base: '6px 6px 0px 0px rgba(0,0,0,1)',
+      },
+      translate: {
+        boxShadowX: '6px',
+        boxShadowY: '6px',
+      },
     },
   },
   plugins: [],

@@ -12,13 +12,13 @@ export default function SidebarMenu({
 
   return (
     <div
-      className="absolute top-11 left-full duration-500 -z-10 outline outline-2 outline-black bg-primary drop-shadow-2xl rounded-r-md rounded-l-md w-36 shadow-[3px_3px_0px_3px_rgba(0,0,0,1)]"
+      className="absolute top-11 left-full duration-500 -z-10 outline outline-2 outline-black bg-primary rounded-r-md rounded-l-md w-44 shadow-base"
       style={{
-        marginLeft: `${isMenuOpen ? "1.5" : "-10"}rem`,
+        marginLeft: `${isMenuOpen ? "3" : "-20"}rem`,
         visibility: `${isMenuOpen ? "visible" : "hidden"}`,
       }}
     >
-        <div className="text-center text-sm font-bold py-2 cursor-default bg-accent">
+        <div className="text-center text-lg font-bold py-2 cursor-default bg-accent">
             actions
         </div>
         <hr className="border-black border-2 border-x-8"></hr>

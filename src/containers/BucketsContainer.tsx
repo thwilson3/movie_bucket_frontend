@@ -18,31 +18,34 @@ import LoadingSpinner from "../components/LoadingSpinner";
  */
 export default function BucketsContainer() {
   const [buckets, setBuckets] = useState<BucketType[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
   const { currentUser } = useContext(UserContext) as UserContextType;
 
   const headerOptions: HeaderOptions = {
     title: `${currentUser?.username}'s Buckets`,
-    buttons: [{
-      type: "Link",
-      text: "new",
-      path: "add",
-    }]
+    buttons: [
+      {
+        type: "Link",
+        text: "new",
+        path: "add",
+      },
+    ],
   };
 
   useEffect(function getBucketsOnMount() {
+    setIsLoading(true);
     getBuckets();
   }, []);
 
   async function getBuckets() {
     const newBuckets = await MovieBucketAPI.getBuckets();
     setBuckets(newBuckets);
+    setIsLoading(false);
   }
-
-  if (!buckets) return <LoadingSpinner />;
 
   return (
     <MainContainer headerOptions={headerOptions}>
-      <BucketList buckets={buckets} />
+      {isLoading ? <LoadingSpinner /> : <BucketList buckets={buckets} />}
     </MainContainer>
   );
 }

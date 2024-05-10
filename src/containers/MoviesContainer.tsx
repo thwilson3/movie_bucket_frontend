@@ -4,11 +4,12 @@ import { BucketType, HeaderOptions, MovieType, NewMovieType } from "../types";
 
 import MainContainer from "../shared/MainContainer";
 import MovieBucketAPI from "../api/api";
-import LoadingSpinner from "../components/LoadingSpinner";
 import MovieList from "../components/MovieList";
 import SearchBar from "../components/SearchBar";
 import InviteModal from "../components/InviteModal";
 import SearchContainer from "./SearchContainer";
+import LoadingContainer from "./LoadingContainer";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 const defaultBucket: BucketType = {
   id: 0,
@@ -31,6 +32,7 @@ export default function MoviesContainer() {
   const [inviteCode, setInviteCode] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSearch, setIsSearch] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const { id = "" } = useParams();
 
   //TODO: Reconsider how this useEffect is being used
@@ -39,6 +41,7 @@ export default function MoviesContainer() {
   }, []);
 
   async function getAllContent(): Promise<void> {
+    setIsLoading(true);
     try {
       const [movies, { bucket }] = await Promise.all([
         MovieBucketAPI.getMovies(id),
@@ -50,15 +53,18 @@ export default function MoviesContainer() {
     } catch (err) {
       throw new Error(JSON.stringify(err));
     }
+    setIsLoading(false);
   }
 
   async function getMovies(): Promise<void> {
+    setIsLoading(true);
     try {
       const movies = await MovieBucketAPI.getMovies(id);
       setMovies(movies);
     } catch (err) {
       throw new Error(JSON.stringify(err));
     }
+    setIsLoading(false);
   }
 
   function toggleModal() {
@@ -129,8 +135,6 @@ export default function MoviesContainer() {
     ],
   };
 
-  if (!movies) return <LoadingSpinner />;
-
   return (
     <MainContainer headerOptions={headerOptions}>
       {isModalOpen && (
@@ -150,12 +154,16 @@ export default function MoviesContainer() {
           />
         </>
       )}
-      <MovieList
-        movies={movies}
-        movieIds={movieIds}
-        deleteMovie={deleteMovie}
-        addMovie={addMovie}
-      />
+      {isLoading ? (
+        <LoadingSpinner />
+      ) : (
+        <MovieList
+          movies={movies}
+          movieIds={movieIds}
+          deleteMovie={deleteMovie}
+          addMovie={addMovie}
+        />
+      )}
     </MainContainer>
   );
 }
